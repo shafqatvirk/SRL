@@ -1,0 +1,4 @@
+(NP-SBJ (NP-PN (NR 中国)) (NP (NN 党政)(NN 领导人)(CC 和)(NN 人民)) ) 
+(NP-PN-OBJ (NR 金日成)(NN 主席)) 
+(IP (NP-SBJ (-NONE- *PRO*)) (VP (VV 逝世)) ) 
+
