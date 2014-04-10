@@ -1,0 +1,12 @@
+h=shoes h_pos=NNS h_word=shoes h_word_pos=NNS path=NPVPVB t_word_pls_pt=buyNP t_word_pls_h_word=buyshoes subcat=VPVBNP subcatAt=NPNNS subcatStar=VPVBNP ?
+h=and h_pos=CC h_word=and h_word_pos=CC path=CCVPVPVB t_word_pls_pt=buyCC t_word_pls_h_word=buyand subcat=VPVBNP subcatAt=CC subcatStar=VPVPCCVP ?
+h=no-h h_pos=no-h-pos h_word=no-h h_word_pos=no-h-pos path=VPVPVPVB t_word_pls_pt=buyVP t_word_pls_h_word=buyno-h subcat=VPVBNP subcatAt=VPVBNP subcatStar=VPVPCCVP ?
+h=to h_pos=TO h_word=to h_word_pos=TO path=TOVPVPVPVB t_word_pls_pt=buyTO t_word_pls_h_word=buyto subcat=VPVBNP subcatAt=TO subcatStar=VPTOVP ?
+h=need h_pos=VBP h_word=need h_word_pos=VBP path=VBPVPSVPVPVPVB t_word_pls_pt=buyVBP t_word_pls_h_word=buyneed subcat=VPVBNP subcatAt=VBP subcatStar=VPVBPS ?
+h=I h_pos=PRP h_word=I h_word_pos=PRP path=NPSVPSVPVPVPVB t_word_pls_pt=buyNP t_word_pls_h_word=buyI subcat=VPVBNP subcatAt=NPPRP subcatStar=SNPVP ?
+h=no-h h_pos=no-h-pos h_word=no-h h_word_pos=no-h-pos path=NPVPVB t_word_pls_pt=getNP t_word_pls_h_word=getno-h subcat=VPVBNP subcatAt=NPDTNN subcatStar=VPVBNP ?
+h=no-h h_pos=no-h-pos h_word=no-h h_word_pos=no-h-pos path=VPVPVPVB t_word_pls_pt=getVP t_word_pls_h_word=getno-h subcat=VPVBNP subcatAt=VPVBNP subcatStar=VPVPCCVP ?
+h=and h_pos=CC h_word=and h_word_pos=CC path=CCVPVPVB t_word_pls_pt=getCC t_word_pls_h_word=getand subcat=VPVBNP subcatAt=CC subcatStar=VPVPCCVP ?
+h=to h_pos=TO h_word=to h_word_pos=TO path=TOVPVPVPVB t_word_pls_pt=getTO t_word_pls_h_word=getto subcat=VPVBNP subcatAt=TO subcatStar=VPTOVP ?
+h=need h_pos=VBP h_word=need h_word_pos=VBP path=VBPVPSVPVPVPVB t_word_pls_pt=getVBP t_word_pls_h_word=getneed subcat=VPVBNP subcatAt=VBP subcatStar=VPVBPS ?
+h=I h_pos=PRP h_word=I h_word_pos=PRP path=NPSVPSVPVPVPVB t_word_pls_pt=getNP t_word_pls_h_word=getI subcat=VPVBNP subcatAt=NPPRP subcatStar=SNPVP ?

@@ -1,0 +1,12 @@
+﻿(ROOT
+  (S
+    (NP (PRP I))
+    (VP (VBP need)
+      (S
+        (VP (TO to)
+          (VP
+            (VP (VB buy)
+              (NP (NNS shoes)))
+            (CC and)
+            (VP (VB get)
+              (NP (DT some) (NN food)))))))))

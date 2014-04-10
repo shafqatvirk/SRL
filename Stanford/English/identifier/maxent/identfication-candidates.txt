@@ -1,0 +1,10 @@
+h=to h_pos=TO path=TOPPVPVBD t_word_pls_pt=wentTO t_word_pls_h_word=wentto distance_pls_t_word=4went ?
+h=market h_pos=NN path=NPPPVPVBD t_word_pls_pt=wentNP t_word_pls_h_word=wentmarket distance_pls_t_word=4went ?
+h=no-h h_pos=no-h-pos path=SVPVBD t_word_pls_pt=wentS t_word_pls_h_word=wentno-h distance_pls_t_word=3went ?
+h=I h_pos=PRP path=NPSVPVBD t_word_pls_pt=wentNP t_word_pls_h_word=wentI distance_pls_t_word=4went ?
+h=no-h h_pos=no-h-pos path=NPVPVB t_word_pls_pt=buyNP t_word_pls_h_word=buyno-h distance_pls_t_word=3buy ?
+h=to h_pos=TO path=TOVPVPVB t_word_pls_pt=buyTO t_word_pls_h_word=buyto distance_pls_t_word=4buy ?
+h=went h_pos=VBD path=VBDVPSVPVPVB t_word_pls_pt=buyVBD t_word_pls_h_word=buywent distance_pls_t_word=6buy ?
+h=to h_pos=TO path=TOPPVPSVPVPVB t_word_pls_pt=buyTO t_word_pls_h_word=buyto distance_pls_t_word=7buy ?
+h=market h_pos=NN path=NPPPVPSVPVPVB t_word_pls_pt=buyNP t_word_pls_h_word=buymarket distance_pls_t_word=7buy ?
+h=I h_pos=PRP path=NPSVPSVPVPVB t_word_pls_pt=buyNP t_word_pls_h_word=buyI distance_pls_t_word=7buy ?

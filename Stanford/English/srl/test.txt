@@ -1,0 +1,24 @@
+h=filters h_pos=NNS path=NPVPVB t_word_pls_pt=makeNP t_word_pls_h_word=makefilters distance_pls_t_word=3make ?
+h=filters h_pos=NNS h_word=filters h_word_pos=NNS path=NPVPVB t_word_pls_pt=makeNP t_word_pls_h_word=makefilters subcat=VPVBNP subcatAt=NPNNPNNNNS subcatStar=VPVBNP ?
+h=to h_pos=TO path=TOVPVPVB t_word_pls_pt=makeTO t_word_pls_h_word=maketo distance_pls_t_word=4make ?
+h=to h_pos=TO h_word=to h_word_pos=TO path=TOVPVPVB t_word_pls_pt=makeTO t_word_pls_h_word=maketo subcat=VPVBNP subcatAt=TO subcatStar=VPTOVP ?
+h=no-h h_pos=no-h-pos path=NP-SBJS-CLRVPVPVB t_word_pls_pt=makeNP-SBJ t_word_pls_h_word=makeno-h distance_pls_t_word=5make ?
+h=no-h h_pos=no-h-pos h_word=no-h h_word_pos=no-h-pos path=NP-SBJS-CLRVPVPVB t_word_pls_pt=makeNP-SBJ t_word_pls_h_word=makeno-h subcat=VPVBNP subcatAt=NP-SBJ-NONE- subcatStar=S-CLRNP-SBJVP ?
+h=used h_pos=VBN path=VBNVPS-CLRVPVPVB t_word_pls_pt=makeVBN t_word_pls_h_word=makeused distance_pls_t_word=6make ?
+h=used h_pos=VBN h_word=used h_word_pos=VBN path=VBNVPS-CLRVPVPVB t_word_pls_pt=makeVBN t_word_pls_h_word=makeused subcat=VPVBNP subcatAt=VBN subcatStar=VPVBNNPS-CLR ?
+h=no-h h_pos=no-h-pos path=NPVPS-CLRVPVPVB t_word_pls_pt=makeNP t_word_pls_h_word=makeno-h distance_pls_t_word=6make ?
+h=no-h h_pos=no-h-pos h_word=no-h h_word_pos=no-h-pos path=NPVPS-CLRVPVPVB t_word_pls_pt=makeNP t_word_pls_h_word=makeno-h subcat=VPVBNP subcatAt=NP-NONE- subcatStar=VPVBNNPS-CLR ?
+h=once h_pos=RB path=ADVP-TMPRRCVPS-CLRVPVPVB t_word_pls_pt=makeADVP-TMP t_word_pls_h_word=makeonce distance_pls_t_word=7make ?
+h=once h_pos=RB h_word=once h_word_pos=RB path=ADVP-TMPRRCVPS-CLRVPVPVB t_word_pls_pt=makeADVP-TMP t_word_pls_h_word=makeonce subcat=VPVBNP subcatAt=ADVP-TMPRB subcatStar=RRCADVP-TMPVP ?
+h=form h_pos=NN path=NPNP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=makeNP t_word_pls_h_word=makeform distance_pls_t_word=8make ?
+h=form h_pos=NN h_word=form h_word_pos=NN path=NPNP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=makeNP t_word_pls_h_word=makeform subcat=VPVBNP subcatAt=NPNPPP subcatStar=NP-SBJNPRRC ?
+h=has h_pos=VBZ path=VPS-TPC-1NP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=makeVP t_word_pls_h_word=makehas distance_pls_t_word=9make ?
+h=has h_pos=VBZ h_word=has h_word_pos=VBZ path=VPS-TPC-1NP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=makeVP t_word_pls_h_word=makehas subcat=VPVBNP subcatAt=VPVBZVP subcatStar=S-TPC-1NP-SBJVP ?
+h=no-h h_pos=no-h-pos path=,SS-TPC-1NP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=make, t_word_pls_h_word=makeno-h distance_pls_t_word=10make ?
+h=no-h h_pos=no-h-pos h_word=no-h h_word_pos=no-h-pos path=,SS-TPC-1NP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=make, t_word_pls_h_word=makeno-h subcat=VPVBNP subcatAt=, subcatStar=SS-TPC-1,NP-SBJVP. ?
+h=researchers h_pos=NNS path=NP-SBJSS-TPC-1NP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=makeNP-SBJ t_word_pls_h_word=makeresearchers distance_pls_t_word=10make ?
+h=researchers h_pos=NNS h_word=researchers h_word_pos=NNS path=NP-SBJSS-TPC-1NP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=makeNP-SBJ t_word_pls_h_word=makeresearchers subcat=VPVBNP subcatAt=NP-SBJNNS subcatStar=SS-TPC-1,NP-SBJVP. ?
+h=reported h_pos=VBD path=VPSS-TPC-1NP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=makeVP t_word_pls_h_word=makereported distance_pls_t_word=10make ?
+h=reported h_pos=VBD h_word=reported h_word_pos=VBD path=VPSS-TPC-1NP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=makeVP t_word_pls_h_word=makereported subcat=VPVBNP subcatAt=VPVBDSBAR subcatStar=SS-TPC-1,NP-SBJVP. ?
+h=no-h h_pos=no-h-pos path=.SS-TPC-1NP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=make. t_word_pls_h_word=makeno-h distance_pls_t_word=10make ?
+h=no-h h_pos=no-h-pos h_word=no-h h_word_pos=no-h-pos path=.SS-TPC-1NP-SBJRRCVPS-CLRVPVPVB t_word_pls_pt=make. t_word_pls_h_word=makeno-h subcat=VPVBNP subcatAt=. subcatStar=SS-TPC-1,NP-SBJVP. ?

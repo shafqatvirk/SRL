@@ -1,0 +1,2 @@
+('buy', 'ARG1', 'shoes')
+('get', 'ARG1', 'some food')

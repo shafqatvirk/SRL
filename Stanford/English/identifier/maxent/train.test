@@ -1,0 +1,12 @@
+h=shoes h_pos=NNS path=NPVPVB t_word_pls_pt=buyNP t_word_pls_h_word=buyshoes distance_pls_t_word=3buy ?
+h=and h_pos=CC path=CCVPVPVB t_word_pls_pt=buyCC t_word_pls_h_word=buyand distance_pls_t_word=4buy ?
+h=no-h h_pos=no-h-pos path=VPVPVPVB t_word_pls_pt=buyVP t_word_pls_h_word=buyno-h distance_pls_t_word=4buy ?
+h=to h_pos=TO path=TOVPVPVPVB t_word_pls_pt=buyTO t_word_pls_h_word=buyto distance_pls_t_word=5buy ?
+h=need h_pos=VBP path=VBPVPSVPVPVPVB t_word_pls_pt=buyVBP t_word_pls_h_word=buyneed distance_pls_t_word=7buy ?
+h=I h_pos=PRP path=NPSVPSVPVPVPVB t_word_pls_pt=buyNP t_word_pls_h_word=buyI distance_pls_t_word=8buy ?
+h=no-h h_pos=no-h-pos path=NPVPVB t_word_pls_pt=getNP t_word_pls_h_word=getno-h distance_pls_t_word=3get ?
+h=no-h h_pos=no-h-pos path=VPVPVPVB t_word_pls_pt=getVP t_word_pls_h_word=getno-h distance_pls_t_word=4get ?
+h=and h_pos=CC path=CCVPVPVB t_word_pls_pt=getCC t_word_pls_h_word=getand distance_pls_t_word=4get ?
+h=to h_pos=TO path=TOVPVPVPVB t_word_pls_pt=getTO t_word_pls_h_word=getto distance_pls_t_word=5get ?
+h=need h_pos=VBP path=VBPVPSVPVPVPVB t_word_pls_pt=getVBP t_word_pls_h_word=getneed distance_pls_t_word=7get ?
+h=I h_pos=PRP path=NPSVPSVPVPVPVB t_word_pls_pt=getNP t_word_pls_h_word=getI distance_pls_t_word=8get ?
