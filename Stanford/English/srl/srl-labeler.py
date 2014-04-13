@@ -5,10 +5,12 @@ from buildModelAuxiliaries import *
 import nltk
 import os
 import itertools
+from nltk.stem.snowball import SnowballStemmer
 #from nltk.corpus import propbank_ptb
 def build(tree_head_dict):
 #def build():
-		input = open('input.txt')
+		stemmer = SnowballStemmer("english")
+		input = open('parse-output.txt')
 		input_tree_lines = input.readlines()
 		tree = ' '.join([l.rstrip().lstrip().rstrip(' ').lstrip(' ')  for l in input_tree_lines])
 		#print tree
@@ -26,7 +28,7 @@ def build(tree_head_dict):
 		for (pred,pred_terNo) in pred_trees[:]:
 			pruned = pruning(parsed,pred,pred_terNo,[])
 			#print 
-			t_word = pred.word
+			t_word = str(stemmer.stem(pred.word))
 			#t_w_pos = pred.data
 			#pred_parrent = find_pred_parrent(parsed,pred_terNo,None)
 			#subcat = find_subcat(pred_parrent)
@@ -40,8 +42,35 @@ def build(tree_head_dict):
 						concepts.append((t_word,classifier,str(flat_argument)))
 		
 		#print ''.join(print_tree_srl(parsed,[]))			
-		for conc in concepts:
-			print conc
+		arg_list2 = []
+		for (pred_lemma,label,arg_str) in concepts:
+								flat_arg_str = arg_str.replace(' ','_')
+								if label.rstrip() == 'ARG0':
+									arg_list2.append(flat_arg_str+'_'+pred_lemma)
+								elif label.rstrip() == 'ARGM-COM':
+									arg_list2.append(pred_lemma+'_{with}_'+flat_arg_str)
+								elif label.rstrip() == 'ARGM-LOC':
+									arg_list2.append(pred_lemma+'_{in}_'+flat_arg_str)
+								elif label.rstrip() == 'ARGM-DIR':
+									arg_list2.append(pred_lemma+'_{in_the_direction}_'+flat_arg_str)
+								elif label.rstrip() == 'ARGM-PRP':
+									arg_list2.append(pred_lemma+'_{in_order_to}_'+flat_arg_str)
+								elif label.rstrip() == 'ARGM-CAU':
+									arg_list2.append(pred_lemma+'_{because}_'+flat_arg_str)
+								elif label.rstrip() == 'ARGM-NEG':
+									arg_list2.append(pred_lemma+'_{not}_'+flat_arg_str)
+								elif label.rstrip() == 'ARGM-GOL':
+									arg_list2.append(pred_lemma+'_'+flat_arg_str)
+								elif label.rstrip() == 'ARGM-MNR':
+									arg_list2.append(pred_lemma+'_'+flat_arg_str)
+								elif label.rstrip() == 'ARGM-TMP':
+									arg_list2.append(pred_lemma+'_{when}_'+flat_arg_str)
+								elif label.rstrip() == 'ARGM-EXT':
+									arg_list2.append(pred_lemma+'_{by}_'+flat_arg_str)
+								else:
+									arg_list2.append(pred_lemma+'_'+flat_arg_str)
+		for concept in arg_list2:
+			print concept
 					
 if __name__ == "__main__":
  import sys

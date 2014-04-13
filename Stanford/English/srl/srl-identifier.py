@@ -5,10 +5,12 @@ from buildModelAuxiliaries import *
 #import nltk
 import os
 import itertools
+#from nltk.stem.snowball import SnowballStemmer
 #from nltk.corpus import propbank_ptb
 def build(tree_head_dict):
 #def build():
-		input = open('input.txt')
+		#stemmer = SnowballStemmer("english")
+		input = open('parse-output.txt')
 		input_tree_lines = input.readlines()
 		tree = ' '.join([l.rstrip().lstrip().rstrip(' ').lstrip(' ')  for l in input_tree_lines])
 		#print tree
@@ -27,6 +29,7 @@ def build(tree_head_dict):
 			pruned = pruning(parsed,pred,pred_terNo,[])
 			#print 
 			t_word = pred.word
+			#t_word = str(stemmer.stem(pred.word))
 			t_w_pos = pred.data
 			pred_parrent = find_pred_parrent(parsed,pred_terNo,None)
 			subcat = find_subcat(pred_parrent)

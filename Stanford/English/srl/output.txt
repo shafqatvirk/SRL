@@ -1,2 +1,5 @@
-('buy', 'ARG1', 'shoes')
-('get', 'ARG1', 'some food')
+went_to_the_market
+went_{when}_this_morning
+I_went
+bought_some_fruits_and_fresh_vegetables
+I_bought
