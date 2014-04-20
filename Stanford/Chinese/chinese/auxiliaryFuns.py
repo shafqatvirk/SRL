@@ -75,7 +75,7 @@ def find_semType(w,pos,e_hownet,word2semType_dict):
 					 
 				else:
 					#semType_word = 'no-type'
-					semType_word = w # if semantic type is not found then use the word
+					semType_word = w.decode('big5','ignore').encode('gb2312','ignore') # if semantic type is not found then use the word
 				
 			else:
 				#this is valid but it increases the error
@@ -87,7 +87,7 @@ def find_semType(w,pos,e_hownet,word2semType_dict):
 				semType_word = str(list_word[0].getParent()).split("'")[1].split('|')[0] #get semantic type
 	else:
 			#semType_word='no-type'
-			semType_word=w
+			semType_word=w.decode('big5','ignore').encode('gb2312','ignore')
 	return semType_word
 		
 def find_sub_child_word_list(ch,list):

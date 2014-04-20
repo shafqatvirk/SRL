@@ -4,7 +4,7 @@ from auxiliaryFuns import *
 from ehownet import *
 import os
 
-def assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,feature_role_22_dict,feature_role_21_dict,feature_role_20_dict,feature_role_19_dict,feature_role_18_dict,feature_role_17_dict,feature_role_16_dict,feature_role_15_dict,feature_role_14_dict,feature_role_13_dict,feature_role_12_dict,feature_role_11_dict,feature_role_10_dict,feature_role_9_dict,feature_role_8_dict,feature_role_7_dict,feature_role_6_dict,feature_role_5_dict,feature_role_4_dict,feature_role_3_dict,feature_role_2_dict,feature_role_1_dict,tree_head_dict):
+def assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,feature_role_22_dict,feature_role_21_dict,feature_role_20_dict,feature_role_19_dict,feature_role_18_dict,feature_role_17_dict,feature_role_16_dict,feature_role_15_dict,feature_role_14_dict,feature_role_13_dict,feature_role_12_dict,feature_role_11_dict,feature_role_10_dict,feature_role_9_dict,feature_role_8_dict,feature_role_7_dict,feature_role_6_dict,feature_role_5_dict,feature_role_4_dict,feature_role_3_dict,feature_role_2_dict,feature_role_1_dict,tree_head_dict,simplified_tradictional_dict):
 	word2semType_dict = word2semType()
 	e_hownet=EHowNetTree("ehownet_ontology.txt")
 	frameset_file_dict = frameset_dict()
@@ -14,11 +14,10 @@ def assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,
 	old_roles = []
 	new_roles = []
 	f_c = find_best_fc2()
-	for prop in prop_bank:
-	#for prop in prop_bank[0:10]:
+	for prop in prop_bank[:]:
+	#for prop in prop_bank[5193:5194]:
 	#if list(prop)[0]!='#':
 	  #print prop
-	  all_roles_of_tree = []
 	  ids = prop.split(' ')
 	  file_id = ids[0].split('/')[2]
 	  tree_no = int(ids[1])
@@ -26,10 +25,8 @@ def assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,
 	  frameset = ids[4]
 	  args = ids[6:]
 	  ##############
-	  '''
-	  args2 = []
+	  '''args2 = []
 	  for ar in args:
-		#l = ar.split('-')[1]
 		l = '-'.join(ar.split('-')[1:])
 		a = ar.split('-')[0]
 		ags = [z+'-'+l for z in (sum([y.split(';') for y in sum([x.split(',') for x in a.split('*')],[])],[]))]
@@ -38,14 +35,17 @@ def assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,
 	  ##############
 	  file_path = os.path.join("./bracketed/", file_id)
 	  trees = convert_trees(file_path)
-	  #print prop
-	  #if tree_no > len(trees)-1:
-		#continue
-	  #print trees[tree_no].rstrip()
-	  expr = ''.join(list(trees[tree_no].rstrip())[1:-1]).rstrip(' ')
-	  #print expr
-	  (parsed,r) = parseExpr(expr,0,0)
 	  
+	  expr = ''.join(list(trees[tree_no].rstrip())[1:-1]).rstrip(' ').lstrip(' ')
+	  #print expr
+	  #print
+	  (parsed,r) = parseExpr(expr,0,0)
+	  #remove_functional_tags(parsed)
+	  ### to get all words
+	  #chinese_words = print_words(parsed,[],file_id,tree_no)
+	  #for w in list(set(chinese_words)):
+		#print w
+	  ############
 	  #if file_id not in ['chtb_845.fid','chtb_437.fid','chtb_672.fid','chtb_794.fid','chtb_307.fid','chtb_088.fid','chtb_793.fid',
 	  #					'chtb_052.fid','chtb_792.fid','chtb_828.fid','chtb_139.fid','chtb_112.fid','chtb_855.fid']:
 	  (predicate,pred_terNo) = traverse_tree_depth(parsed,predicate_no,0)
@@ -56,15 +56,17 @@ def assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,
 		#print predicate
 		target = ids[4].split('.')[0]
 		target_POS = predicate.data
-		#print 'Target=' + target
-		#print 'Target_POS=' + target_POS
-		#print_tree(predicate)
+	
 		(verb_class,AllFrameSets) = find_verb_class(frameset,frameset_file_dict)
 		subcat = find_subcat(predicate.parent)
 		#print subcat
 		#print AllFrameSets
 		for arg in args:
 			label = '-'.join(arg.split('-')[1:])
+			if label.split('-')[0] in ['ARG0','ARG1','ARG2','ARG3','ARG4']:
+				label = label.split('-')[0]
+			else:
+				label = label.rstrip()
 			if label.rstrip() != 'rel':
 			#if label.rstrip() != 'rel' and label.rstrip() not in ['ARG-LOC','ARGM-TMP','ARGM-GOL','ARGM-MNR','ARGM-CAU','ARGM-ADV']: # to exclude functional tags
 			 nh_pairs = arg.split('-')[0]
@@ -74,14 +76,15 @@ def assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,
 			 #features = find_features(list(nh_pairs),parsed,predicate,target,target_POS,tree_head_dict)
 			 if nh_pairs.find('*') == -1 and nh_pairs.find(';') == -1 and nh_pairs.find(',') == -1:
 				#tree_head_dict = ''
-				(t_word,t_word_pos,h_word,h_word_pos,position,pt,gov,all_words,p,path_to_BA,path_to_BEI,voice,subcatStar,subcatAt,l_sib_pt,r_sib_pt,voice_position) = find_features_without_traces(nh_pairs,parsed,predicate,target,target_POS,tree_head_dict,prop)
+				(t_word,t_word_pos,h_word,h_word_pos,position,pt,gov,all_words,p,path_to_BA,path_to_BEI,voice,subcatStar,subcatAt,l_sib_pt,r_sib_pt,voice_position,layer_cons_focus) = find_features_without_traces(nh_pairs,parsed,predicate,target,target_POS,tree_head_dict,prop)
 				if t_word == 0 and t_word_pos == 0 and h_word == 0 and h_word_pos == 0 and position == 0 and pt == 0 and gov == 0:
 					continue
 				# some phrasetype has = sign which conflits with our models format, just remove it
-				#print t_word
+				#print h_word
 				#print t_word_pos
 				if pt.find('=') != -1:
 					pt = ''.join(pt.split('=')[0])
+					
 				t_word_plus_pt = t_word + pt
 				if all_words != []:
 					first_word = all_words[0]
@@ -89,6 +92,21 @@ def assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,
 				else:
 					first_word = 'no-first-word'
 					last_word = 'no-last-word'
+					
+				############# simplified to traditional conversion
+				#print 'before '+t_word
+				if simplified_tradictional_dict.has_key(h_word.decode('utf-8-sig','ignore').encode('gb2312','ignore')):
+					#print 'yes'
+					h_word_trad = simplified_tradictional_dict[h_word.decode('utf-8-sig','ignore').encode('gb2312','ignore')]
+				if simplified_tradictional_dict.has_key(t_word):
+					t_word_trad = simplified_tradictional_dict[t_word]
+					#print 'after '+t_word_trad
+				if simplified_tradictional_dict.has_key(first_word):
+					first_word_trad = simplified_tradictional_dict[first_word]
+				if simplified_tradictional_dict.has_key(last_word):
+					last_word_trad = simplified_tradictional_dict[last_word]
+				################################
+				
 				############################### use of ehownet
 				'''if h_word != 'no-h-word' and h_word_pos != 'no-h-word-pos': 
 					semType_h_word = find_semType(h_word,h_word_pos,e_hownet,word2semType_dict)
@@ -107,6 +125,17 @@ def assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,
 					if semType_last_word != 'no-type':
 						last_word = semType_last_word # later should use proper label and replac t_word by semType_t_word
 				'''
+				if h_word != 'no-h-word' and h_word_pos != 'no-h-word-pos': 
+					semType_h_word = find_semType(h_word_trad,h_word_pos,e_hownet,word2semType_dict)
+					
+				semType_t_word = find_semType(t_word_trad,target_POS,e_hownet,word2semType_dict)
+				if first_word != 'no-first-word':
+					semType_first_word = find_semType(first_word_trad,'',e_hownet,word2semType_dict)
+				if last_word != 'no-last-word':
+					semType_last_word = find_semType(last_word_trad,'',e_hownet,word2semType_dict)
+			
+				###############################
+				h_word = h_word.decode('utf-8-sig','ignore').encode('gb2312','ignore') # to make everything into once encoding
 				###############################
 				
 				
@@ -120,9 +149,9 @@ def assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,
 				new_roles.append(sRole)
 				#all_roles_of_tree.append((sRole,roles))
 				
-				if label.rstrip() != sRole: #== 'ARG1' and sRole == 'ARG0':
-				#	print str(position) + ' ' + str(voice)
-					print label.rstrip() + ' ' +  str(sRole) + ' ' + str(m) + ' ' + str(n) + ' ' + str(roles)
+				#if label.rstrip() != sRole: #== 'ARG1' and sRole == 'ARG0':
+					#print str(position) + ' ' + str(voice)
+				print label.rstrip() + ' ' +  str(sRole) + ' ' + str(roles)
 				###############################
 		#validated_roles = validate_roles(all_roles_of_tree)
 		#new_roles = new_roles + validated_roles
@@ -502,6 +531,7 @@ def read_m(model_file,fn):
 	
 def role_labeler():
 	tree_head_dict = build_tree_head_dict()
+	simplified_tradictional_dict = build_simplified_traditional_dict()
 	#print 'reading model.......'
 	(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,feature_role_22_dict,feature_role_21_dict,feature_role_20_dict,feature_role_19_dict,feature_role_18_dict,feature_role_17_dict,feature_role_16_dict,feature_role_15_dict,feature_role_14_dict,feature_role_13_dict,feature_role_12_dict,feature_role_11_dict,feature_role_10_dict,feature_role_9_dict,feature_role_8_dict,feature_role_7_dict,feature_role_6_dict,feature_role_5_dict,feature_role_4_dict,feature_role_3_dict,feature_role_2_dict,feature_role_1_dict) = read_model()
 	total = 0
@@ -509,7 +539,7 @@ def role_labeler():
 	#old_semRoles = []
 	#new_semRoles = []
 	#print 'Assigning roles....'
-	(old_semRoles,new_semRoles) = assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,feature_role_22_dict,feature_role_21_dict,feature_role_20_dict,feature_role_19_dict,feature_role_18_dict,feature_role_17_dict,feature_role_16_dict,feature_role_15_dict,feature_role_14_dict,feature_role_13_dict,feature_role_12_dict,feature_role_11_dict,feature_role_10_dict,feature_role_9_dict,feature_role_8_dict,feature_role_7_dict,feature_role_6_dict,feature_role_5_dict,feature_role_4_dict,feature_role_3_dict,feature_role_2_dict,feature_role_1_dict,tree_head_dict)
+	(old_semRoles,new_semRoles) = assign_roles(feature_role_25_dict,feature_role_24_dict,feature_role_23_dict,feature_role_22_dict,feature_role_21_dict,feature_role_20_dict,feature_role_19_dict,feature_role_18_dict,feature_role_17_dict,feature_role_16_dict,feature_role_15_dict,feature_role_14_dict,feature_role_13_dict,feature_role_12_dict,feature_role_11_dict,feature_role_10_dict,feature_role_9_dict,feature_role_8_dict,feature_role_7_dict,feature_role_6_dict,feature_role_5_dict,feature_role_4_dict,feature_role_3_dict,feature_role_2_dict,feature_role_1_dict,tree_head_dict,simplified_tradictional_dict)
 	#new_semRoles = tree_semRoles(new_tree,new_semRoles)
 	#new_trees.append(new_tree)
 	#print_tree(tree)
@@ -569,24 +599,25 @@ def compare_trees(old,new,correct,total):
 		compare_trees(old.children[ch],new.children[ch],correct,total)
 	return (correct,total)
 def compare_our_maxent():
-	our = open('test-out.txt').readlines()
-	maxent = open('./ch-pb-srl-full/results/ch-propbank-results.txt').readlines()
+	our = open('test-out-ch.txt').readlines()
+	#maxent = open('./ch-pb-srl-full/results/ch-propbank-results.txt').readlines()
+	maxent = open('C:\shafqat\PostDoc\SRL\experiments\SRLTraining\maxent\opennlp-maxent\opennlp-maxent-3.0.0\samples\sports\ch-propbank-results.txt').readlines()
 	roles = []
 	for (o,m) in zip(our,maxent):
 		to = o.split(' ')
 		tm = m.split(' ')
 		'''if tm[0] != to[0]:
 			print tm[0]'''
-		if to[3].rstrip() == '[]':
+		if to[2].rstrip() == '[]':
 			roles.append((to[0],tm[0]))
 		else:
-			p1 = float(to[3].split(',')[0].split('(')[1])
+			p1 = float(to[2].split(',')[0].split('(')[1])
 			p2 = float(tm[1].rstrip())
 			'''if p1 < 1.0:
 				roles.append((to[0],tm[0]))
 			else:
 				roles.append((to[0],to[1]))'''
-			if p2 < 0.64:
+			if p2 < 0.61: # 0.61
 				roles.append((to[0],to[1]))
 			else:
 				roles.append((to[0],tm[0]))
@@ -711,10 +742,10 @@ if __name__ == "__main__":
  try:
  
 	#role_labeler()
-	#compare_our_maxent()
+	compare_our_maxent()
 	#compare_maxent_maxent()
 	#maxent_multi_model()
-	draw_a_tree()
+	#draw_a_tree()
  except:
 	print >>sys.stderr, __doc__
 	raise

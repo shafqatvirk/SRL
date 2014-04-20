@@ -218,7 +218,7 @@ def find_full_path(arg,t,n,d,pred):
 def find_predicate(arg,invalid_ch,pred,p_path,f):
 	for ch in arg.children:
 		if ch != invalid_ch:
-			if ch == pred and ch.terNo == pred.terNo:
+			if ch == pred and ch.terNo == pred.terNo and f == False:
 				#print ch.data
 				#print ch.terNo
 				#print n
@@ -227,7 +227,7 @@ def find_predicate(arg,invalid_ch,pred,p_path,f):
 				p_path.append(path_node)
 				#p_path.append(ch.data.rstrip())
 				break
-			else:
+			elif f == False:
 				#f = False
 				path_node = 'd'+ch.data.rstrip() # 'd' to denote downward direction
 				p_path.append(path_node)
@@ -263,7 +263,7 @@ def find_path_to_BA(arg,t,n,d,pred,b1,b2):
 def find_BA(arg,invalid_ch,pred,p_path,f,b1,b2,BA_terNo):
 	for ch in arg.children:
 		if ch != invalid_ch:
-			if ch.data == b1 or ch.data == b2:
+			if ch.data == b1 or ch.data == b2 and f == False:
 				#print ch.data
 				#print ch.terNo
 				#print n
@@ -273,7 +273,7 @@ def find_BA(arg,invalid_ch,pred,p_path,f,b1,b2,BA_terNo):
 				p_path.append(path_node)
 				#p_path.append(ch.data)
 				break
-			else:
+			elif f == False:
 				#f = False
 				#print ch.data
 				path_node = 'd'+ch.data.rstrip() # 'd' to denote upward direction

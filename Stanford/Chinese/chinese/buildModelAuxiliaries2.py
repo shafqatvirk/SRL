@@ -182,7 +182,7 @@ def find_features_without_traces(nh_pairs,parsed,predicate,target,target_POS,tre
 	#print predicate.terNo
 	if arg != 0 and arg != None:
 		if (len(arg.children) == 1 and (arg.children[0].data == '-NONE-')) or arg.data == '-NONE-':
-				return (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+				return (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
 		gov = find_gov(parsed,terNo,height)
 		(p,path_to_BA,path_to_BEI,voice,BA_terNo,BEI_terNo) = path(parsed,terNo,height,predicate)
 		if BA_terNo < arg.terNo or BEI_terNo < arg.terNo:
@@ -211,7 +211,7 @@ def find_features_without_traces(nh_pairs,parsed,predicate,target,target_POS,tre
 			#if len(arg.children) == 1 and (arg.children[0].data == '-NONE-' or arg.children[0].data == 'PP'):
 			#all_words = find_first_last_word(arg,[])
 			if len(arg.children) == 1 and (arg.children[0].data == '-NONE-'):
-				return (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+				return (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
 				#h_word = 'no-h-word'
 				#h_word_pos = 'no-h-word-pos'
 			else:
@@ -228,7 +228,7 @@ def find_features_without_traces(nh_pairs,parsed,predicate,target,target_POS,tre
 					h_word_pos = 'no-h-word-pos'
 		else:
 				#print 'none'
-				return (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+				return (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
 		#########################
 		#print 'Phrase Type = ' + arg.data
 		if predicate.terNo > trNo:
@@ -238,9 +238,15 @@ def find_features_without_traces(nh_pairs,parsed,predicate,target,target_POS,tre
 		#if pt != '-NONE-':
 		#list_of_features = [target,target_POS,h_word,h_word_pos,position,pt,gov]#list_of_features+'('+target+','+target_POS+','+h_word+','+h_word_pos+','+str(position)+','+pt+','+gov+')'
 		layer_cons_focus = str(p.count('u') - p.count('d'))
-		return (target,target_POS,h_word,h_word_pos,str(position),pt,gov,all_words,p,path_to_BA,path_to_BEI,voice,subcatStar,subcatAt,l_sib_pt,r_sib_pt,voice_position,layer_cons_focus)
+		pred_parent = predicate.parent.data
+		if arg.parent != None:
+			arg_parent = arg.parent.data
+		else:
+			arg_parent = 'none'
+		pred_parent_pls_arg_parent = pred_parent + arg_parent
+		return (target,target_POS,h_word,h_word_pos,str(position),pt,gov,all_words,p,path_to_BA,path_to_BEI,voice,subcatStar,subcatAt,l_sib_pt,r_sib_pt,voice_position,layer_cons_focus,pred_parent_pls_arg_parent)
 	else:
-		return (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+		return (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
 
 def find_first_last_word(arg,all_words):
 	if arg.word != [] and arg.word != None and arg.data != '-NONE-':
@@ -251,8 +257,8 @@ def find_first_last_word(arg,all_words):
 
 def build_tree_head_dict():
 	dict = {}
-	trees = open('argument-trees-utf8-temp5.txt').readlines()
-	heads = open('heads-final.txt')
+	trees = open('argument-trees3.txt').readlines()
+	heads = open('new-heads-gbk.txt')
 	for t in trees:
 		dict[t.rstrip()] = heads.readline().rstrip()
 		#print t.rstrip() + ',' + dict[t.rstrip()]
@@ -318,6 +324,12 @@ def find_left_right_child_pt(tree,ch):
 		right = tree.children[indx+1].data
 		#left_role = tree.children[indx-1].semRole
 	return (left,right)
+
+def remove_functional_tags(node):
+	if node.data.find('-') != -1:
+		node.data = node.data.split('-')[0]
+	for ch in node.children:
+		remove_functional_tags(ch)
 
 def find_best_fc():
 	best = []

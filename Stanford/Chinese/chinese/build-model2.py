@@ -63,7 +63,8 @@ def build(tree_head_dict,simplified_tradictional_dict):
 	#prop_bank = open('cpb1.0.txt').readlines()
 	prop_bank = open('propbank.test').readlines()
 	#prop_bank = open('dev.test').readlines()
-	for prop in prop_bank[0:]:
+	for prop in prop_bank[:]:
+	
 	#for prop in prop_bank[5193:5194]:
 	#if list(prop)[0]!='#':
 	  #print prop
@@ -84,21 +85,12 @@ def build(tree_head_dict,simplified_tradictional_dict):
 	  ##############
 	  file_path = os.path.join("./bracketed/", file_id)
 	  trees = convert_trees(file_path)
-	  #print prop
-	  '''if tree_no > len(trees)-1:
-		for t in trees:
-			print t
-		print len(trees)
-		print tree_no
-		print file_id'''
-	  #continue
-	  #print trees[tree_no].rstrip()
-	  #print trees[tree_no]
-	  #print 
+	  
 	  expr = ''.join(list(trees[tree_no].rstrip())[1:-1]).rstrip(' ').lstrip(' ')
 	  #print expr
 	  #print
 	  (parsed,r) = parseExpr(expr,0,0)
+	  #remove_functional_tags(parsed)
 	  ### to get all words
 	  #chinese_words = print_words(parsed,[],file_id,tree_no)
 	  #for w in list(set(chinese_words)):
@@ -114,15 +106,24 @@ def build(tree_head_dict,simplified_tradictional_dict):
 		#print predicate
 		target = ids[4].split('.')[0]
 		target_POS = predicate.data
-		#print 'Target=' + target
-		#print 'Target_POS=' + target_POS
-		#print_tree(predicate)
+	
 		(verb_class,AllFrameSets) = find_verb_class(frameset,frameset_file_dict)
 		subcat = find_subcat(predicate.parent)
 		#print subcat
 		#print AllFrameSets
+		all_labels = []
+		label_list = []
+		label_list = ['-'.join(a.split('-')[1:]) for a in args]
+		if 'rel\n' in label_list:
+			label_list.remove('rel\n')
 		for arg in args:
 			label = '-'.join(arg.split('-')[1:])
+			label_context = ''.join([l.rstrip() for l in label_list if l != label])
+			complete_label = label.rstrip()
+			if label.split('-')[0] in ['ARG0','ARG1','ARG2','ARG3','ARG4']:
+				label = label.split('-')[0]
+			else:
+				label = label.rstrip()
 			if label.rstrip() != 'rel':
 			#if label.rstrip() != 'rel' and label.rstrip() not in ['ARG-LOC','ARGM-TMP','ARGM-GOL','ARGM-MNR','ARGM-CAU','ARGM-ADV']: # to exclude functional tags
 			 nh_pairs = arg.split('-')[0]
@@ -132,11 +133,11 @@ def build(tree_head_dict,simplified_tradictional_dict):
 			 #features = find_features(list(nh_pairs),parsed,predicate,target,target_POS,tree_head_dict)
 			 if nh_pairs.find('*') == -1 and nh_pairs.find(';') == -1 and nh_pairs.find(',') == -1:
 				#tree_head_dict = ''
-				(t_word,t_word_pos,h_word,h_word_pos,position,pt,gov,all_words,p,path_to_BA,path_to_BEI,voice,subcatStar,subcatAt,l_sib_pt,r_sib_pt,voice_position,layer_cons_focus) = find_features_without_traces(nh_pairs,parsed,predicate,target,target_POS,tree_head_dict,prop)
+				(t_word,t_word_pos,h_word,h_word_pos,position,pt,gov,all_words,p,path_to_BA,path_to_BEI,voice,subcatStar,subcatAt,l_sib_pt,r_sib_pt,voice_position,layer_cons_focus,pred_parent_pls_arg_parent) = find_features_without_traces(nh_pairs,parsed,predicate,target,target_POS,tree_head_dict,prop)
 				if t_word == 0 and t_word_pos == 0 and h_word == 0 and h_word_pos == 0 and position == 0 and pt == 0 and gov == 0:
 					continue
 				# some phrasetype has = sign which conflits with our models format, just remove it
-				#print t_word
+				#print h_word
 				#print t_word_pos
 				if pt.find('=') != -1:
 					pt = ''.join(pt.split('=')[0])
@@ -149,10 +150,12 @@ def build(tree_head_dict,simplified_tradictional_dict):
 					first_word = 'no-first-word'
 					last_word = 'no-last-word'
 					
+				labels = '-'.join(all_labels)
 				############# simplified to traditional conversion
 				#print 'before '+t_word
-				if simplified_tradictional_dict.has_key(h_word):
-					h_word_trad = simplified_tradictional_dict[h_word]
+				if simplified_tradictional_dict.has_key(h_word.decode('utf-8-sig','ignore').encode('gb2312','ignore')):
+					#print 'yes'
+					h_word_trad = simplified_tradictional_dict[h_word.decode('utf-8-sig','ignore').encode('gb2312','ignore')]
 				if simplified_tradictional_dict.has_key(t_word):
 					t_word_trad = simplified_tradictional_dict[t_word]
 					#print 'after '+t_word_trad
@@ -190,17 +193,16 @@ def build(tree_head_dict,simplified_tradictional_dict):
 					semType_last_word = find_semType(last_word_trad,'',e_hownet,word2semType_dict)
 			
 				###############################
-				
+				h_word = h_word.decode('utf-8-sig','ignore').encode('gb2312','ignore') # to make everything into once encoding
 				#baseline
 				#print 't_word_pos='+str(t_word_pos)+' h_word='+str(h_word)+' h_word_pos='+str(h_word_pos)+' position='+str(position)+' pt='+str(pt)+' t_word_plus_pt='+str(t_word_plus_pt)+' path_to_BA='+str(path_to_BA)+' path_to_BEI='+str(path_to_BEI)+' verb_calss='+str(verb_class)+' verb_class_plus_pt='+(verb_class+pt)+' r_sib_pt='+str(r_sib_pt)+ ' allFrameSets='+str(AllFrameSets)+ ' verb_class_plus_allFrameSets='+str(verb_class+AllFrameSets)+' voice_position='+str(voice_position)+' SemType_h_word='+str(semType_h_word)+' semType_t_word='+str(semType_t_word)+' semType_first_word='+str(semType_first_word)+' semType_last_word='+str(semType_last_word)+' semType_t_pls_l_word='+str(semType_t_word+semType_last_word)+' layer_cons_focus='+layer_cons_focus+' '+label.rstrip()
 				#print 't_word_pos='+str(t_word_pos)+' h_word='+str(h_word)+' h_word_pos='+str(h_word_pos)+' position='+str(position)+' pt='+str(pt)+' t_word_plus_pt='+str(t_word_plus_pt)+' path_to_BA='+str(path_to_BA)+' path_to_BEI='+str(path_to_BEI)+' verb_calss='+str(verb_class)+' verb_class_plus_pt='+(verb_class+pt)+' r_sib_pt='+str(r_sib_pt)+ ' allFrameSets='+str(AllFrameSets)+ ' verb_class_plus_allFrameSets='+str(verb_class+AllFrameSets)+' voice_position='+str(voice_position)+' SemType_h_word='+str(semType_h_word)+' semType_t_word='+str(semType_t_word)+' semType_first_word='+str(semType_first_word)+' semType_last_word='+str(semType_last_word)+' semType_t_pls_l_word='+str(semType_t_word+semType_last_word)+' layer_cons_focus='+layer_cons_focus+' ?'
 				# full feature model
-				#print 't_word='+str(t_word)+' t_word_pos='+str(t_word_pos)+' h_word='+str(h_word)+' h_word_pos='+str(h_word_pos)+' position='+str(position)+' pt='+str(pt)+' gov='+str(gov.rstrip())+' t_word_plus_pt='+str(t_word_plus_pt)+ ' t_word_plus_h_word='+str(t_word+h_word)+' first_word='+first_word+ ' last_word='+last_word+' voice='+str(voice)+' subcat='+str(subcat)+' subcatStar='+str(subcatStar)+' subcatAt='+str(subcatAt)+' path='+str(p)+' path_to_BA='+str(path_to_BA)+' path_to_BEI='+str(path_to_BEI)+' verb_calss='+str(verb_class)+' verb_class_plus_pt='+(verb_class+pt)+ ' verb_class_plus_h_word='+str(verb_class+h_word)+' l_sib_pt='+str(l_sib_pt)+ ' r_sib_pt='+str(r_sib_pt)+ ' allFrameSets='+str(AllFrameSets)+ ' verb_class_plus_allFrameSets='+str(verb_class+AllFrameSets)+' SemType_h_word='+str(semType_h_word)+' semType_t_word='+str(semType_t_word)+' semType_first_word='+str(semType_first_word)+' semType_last_word='+str(semType_last_word)+' semType_t_pls_l_word='+str(semType_t_word+semType_last_word)+' layer_cons_focus='+layer_cons_focus+' '+label.rstrip()
-				print 't_word='+str(t_word)+' t_word_pos='+str(t_word_pos)+' h_word='+str(h_word)+' h_word_pos='+str(h_word_pos)+' position='+str(position)+' pt='+str(pt)+' gov='+str(gov.rstrip())+' t_word_plus_pt='+str(t_word_plus_pt)+ ' t_word_plus_h_word='+str(t_word+h_word)+' first_word='+first_word+ ' last_word='+last_word+' voice='+str(voice)+' subcat='+str(subcat)+' subcatStar='+str(subcatStar)+' subcatAt='+str(subcatAt)+' path='+str(p)+' path_to_BA='+str(path_to_BA)+' path_to_BEI='+str(path_to_BEI)+' verb_calss='+str(verb_class)+' verb_class_plus_pt='+(verb_class+pt)+ ' verb_class_plus_h_word='+str(verb_class+h_word)+' l_sib_pt='+str(l_sib_pt)+ ' r_sib_pt='+str(r_sib_pt)+ ' allFrameSets='+str(AllFrameSets)+ ' verb_class_plus_allFrameSets='+str(verb_class+AllFrameSets)+' SemType_h_word='+str(semType_h_word)+' semType_t_word='+str(semType_t_word)+' semType_first_word='+str(semType_first_word)+' semType_last_word='+str(semType_last_word)+' semType_t_pls_l_word='+str(semType_t_word+semType_last_word)+' layer_cons_focus='+layer_cons_focus+' ?'
+				#print 't_word='+str(t_word)+' t_word_pos='+str(t_word_pos)+' h_word='+str(h_word)+' h_word_pos='+str(h_word_pos)+' position='+str(position)+' pt='+str(pt)+' gov='+str(gov.rstrip())+' t_word_plus_pt='+str(t_word_plus_pt)+ ' t_word_plus_h_word='+str(t_word+h_word)+' first_word='+first_word+ ' last_word='+last_word+' voice='+str(voice)+' subcat='+str(subcat)+' subcatStar='+str(subcatStar)+' subcatAt='+str(subcatAt)+' path='+str(p)+' path_to_BA='+str(path_to_BA)+' path_to_BEI='+str(path_to_BEI)+' verb_calss='+str(verb_class)+' verb_class_plus_pt='+(verb_class+pt)+ ' verb_class_plus_h_word='+str(verb_class+h_word)+' l_sib_pt='+str(l_sib_pt)+ ' r_sib_pt='+str(r_sib_pt)+ ' allFrameSets='+str(AllFrameSets)+ ' verb_class_plus_allFrameSets='+str(verb_class+AllFrameSets)+' SemType_h_word='+str(semType_h_word)+' semType_t_word='+str(semType_t_word)+' semType_first_word='+str(semType_first_word)+' semType_last_word='+str(semType_last_word)+' semType_t_pls_l_word='+str(semType_t_word+semType_last_word)+' layer_cons_focus='+layer_cons_focus+' all_labels=' + labels + ' pred_parent_pls_arg_parent='+pred_parent_pls_arg_parent+' label_context='+label_context+' '+label.rstrip()
+				print 't_word='+str(t_word)+' t_word_pos='+str(t_word_pos)+' h_word='+str(h_word)+' h_word_pos='+str(h_word_pos)+' position='+str(position)+' pt='+str(pt)+' gov='+str(gov.rstrip())+' t_word_plus_pt='+str(t_word_plus_pt)+ ' t_word_plus_h_word='+str(t_word+h_word)+' first_word='+first_word+ ' last_word='+last_word+' voice='+str(voice)+' subcat='+str(subcat)+' subcatStar='+str(subcatStar)+' subcatAt='+str(subcatAt)+' path='+str(p)+' path_to_BA='+str(path_to_BA)+' path_to_BEI='+str(path_to_BEI)+' verb_calss='+str(verb_class)+' verb_class_plus_pt='+(verb_class+pt)+ ' verb_class_plus_h_word='+str(verb_class+h_word)+' l_sib_pt='+str(l_sib_pt)+ ' r_sib_pt='+str(r_sib_pt)+ ' allFrameSets='+str(AllFrameSets)+ ' verb_class_plus_allFrameSets='+str(verb_class+AllFrameSets)+' SemType_h_word='+str(semType_h_word)+' semType_t_word='+str(semType_t_word)+' semType_first_word='+str(semType_first_word)+' semType_last_word='+str(semType_last_word)+' semType_t_pls_l_word='+str(semType_t_word+semType_last_word)+' layer_cons_focus='+layer_cons_focus+' all_labels=' + labels + ' pred_parent_pls_arg_parent='+pred_parent_pls_arg_parent+' label_context='+label_context+' ?'
 				#print str(t_word)+' '+str(t_word_pos)+','+str(h_word)+' '+str(h_word_pos)+' '+str(position)+' '+str(pt)+' '+str(gov.rstrip())+' '+str(t_word_plus_pt)+ ' '+str(t_word+h_word)+' '+first_word+ ' '+last_word+' '+str(voice)+' '+str(subcat)+' '+str(subcatStar)+' '+str(subcatAt)+' '+str(p)+' '+str(path_to_BA)+' '+str(path_to_BEI)+' '+str(verb_class)+' '+(verb_class+pt)+ ' '+str(verb_class+h_word)+' '+str(l_sib_pt)+ ' '+str(r_sib_pt)+ ' '+str(AllFrameSets)+ ' '+str(verb_class+AllFrameSets)+' '+label.rstrip()
-				
-				'''
-				all_features = [str(t_word),str(t_word_pos),str(h_word),str(h_word_pos),str(position),str(pt),str(gov.rstrip()),str(t_word_plus_pt),str(t_word+h_word),first_word,last_word,str(voice),str(subcat.rstrip()),str(subcatStar.rstrip()),str(subcatAt.rstrip()),str(p),str(path_to_BA),str(path_to_BEI),str(verb_class),(verb_class+pt),str(verb_class+h_word),str(l_sib_pt),str(r_sib_pt),str(AllFrameSets),str(verb_class+AllFrameSets),label.rstrip()]
+				all_labels.append(complete_label)
+				'''all_features = [str(t_word),str(t_word_pos),str(h_word),str(h_word_pos),str(position),str(pt),str(gov.rstrip()),str(t_word_plus_pt),str(t_word+h_word),first_word,last_word,str(voice),str(subcat.rstrip()),str(subcatStar.rstrip()),str(subcatAt.rstrip()),str(p),str(path_to_BA),str(path_to_BEI),str(verb_class),(verb_class+pt),str(verb_class+h_word),str(l_sib_pt),str(r_sib_pt),str(AllFrameSets),str(verb_class+AllFrameSets),label.rstrip()]
 				(roles_25_dict,total_25_dict)= build_dict(roles_25_dict,total_25_dict,all_features,f_c[0])
 				(roles_24_dict,total_24_dict)= build_dict(roles_24_dict,total_24_dict,all_features,f_c[1])
 				(roles_23_dict,total_23_dict)= build_dict(roles_23_dict,total_23_dict,all_features,f_c[2])
