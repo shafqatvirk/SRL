@@ -1,0 +1,59 @@
+1. VP(Head:VJ3:毫無|range:NP(property:NP‧的(head:NP(property:Nab:女|Head:Nab:學究)|Head:DE:的)|property:VH11:陳腐|Head:Nad:氣味))
+odor,Nad,human,NP‧的,NP,-1,NP‧的-NP-Nab-Nab-DE,False,empty-VH11,female-human-tool-uninventive-odor
+->semantic type:毫無(receive-deceive)女(female-humanized-daughter)學究(humanized)的(tool-particle-over)陳腐(uninventive)氣味(odor)
+->POS :seems no problem with 中央研究院平衡語料庫的內容與說明.txt
+
+2. GP(DUMMY:NP(property:VP‧的(head:VP(time:Dd:趕快|deixis:Dbab:去|Head:VC31:做|theme:NP(quantifier:DM:些|property:S‧的(head:S(agent:NP(Head:Nhab:自己)|time:Dd:一直|Head:VE2:想|goal:VP(Head:VC31:做))|Head:DE:的)|Head:Nac:事))|Head:DE:的)|Head:Nac:意念)|Head:Ng:外)
+        thought,Nac,engage,VP‧的,NP,-1,VP‧的-VP-Dd-Dbab-VC31-NP-DM-S‧的-S-NP-Nhab-Dd-VE2-VP-VC31-DE-Nac-DE,False,empty-Nac,SpeedUp-from-engage-DegreeValue-self-continuous-ThinkOf-engage-tool-affairs-tool-thought
+->semantic type:趕快(SpeedUp)去(go-destroy-BeBeyond-purpose-particle)做(compile-undertake-RegardAs
+)些(very-RateValue)自己(self)一直(continuous-habitual)想(LookBack-thought-ThinkOf)做(compile-undertake-RegardAs)的(tool-particle-over)事(deceive-affairs)的(tool-particle-over)意念(thought)外(external)
+->POS:seems no problem with 中央研究院平衡語料庫的內容與說明.txt
+
+4. VP(Head:VK2:造成|goal:NP(property:V‧的(head:VH11:後繼無人|Head:DE:的)|Head:Nad:局面))
+        ResultIn,VK2,CircumstancesValue,NP,VP,1,NP-V‧的-VH11-DE-Nad,False,VK2-empty,ResultIn-exist-tool-CircumstancesValue
+->semantic type:造成(ResultIn)後繼無人(ComeToWorld)的(tool-particle-over)局面(incomplete)
+->POS:seems no problem with 中央研究院平衡語料庫的內容與說明.txt
+
+5. VP(benefactor:PP(Head:P37:替|DUMMY:NP(quantifier:Neqa:這些|property:Nac:企業|Head:Nab:財團))|Head:VC2:開|aspect:Di:了|goal:NP(property:VP‧的(head:VP(degree:Dfa:更|Head:VH13:大)|Head:DE:的)|Head:Nab:方便之門))
+->semantic type:替(target-benefactor)這些(RateValue)企業(community)財團(community)開(start-escape-drive-open-StateChange-small-farewell)了(finish-Vgoingon-particle)更(alter-SpeakingTime-very-permanent)大(big-very)的(tool-particle-over)方便之門(affairs)
+->POS:seems no problem with 中央研究院平衡語料庫的內容與說明.txt
+
+6. S(topic:NP(property:VH11:驚人|Head:Nad:長打率)|Head:VK1:相信|goal:S(uncondition:Cbba:連|agent:NP(Head:Nba(DUMMY1:Nba:王貞治|Head:Caa:及|DUMMY2:Nba:貝比魯斯))|evaluation:Dbb:也|time:Dd:未曾|Head:VC31:創下))
+        fulfil,VC31,arrive,NP,S,-1,NP-Nba-Nba-Caa-Nba,False,Cbba-Dbb,surname-human-arrive-no-type-together-FrequencyValue-fulfil
+->semantic type:驚人(surprise)長打率(no semantic type)相信(believe)連(continuous-army-surname-fasten-restriction)王貞治(humanized)及(arrive-or)貝比魯斯(humanized)也(together-particle)未曾(habitual)創下(fulfil)
+->POS:seems no problem with 中央研究院平衡語料庫的內容與說明.txt
+
+12. VP(quantity:Daa:才|Head:VK1:知道|goal:S(location:NP(property:Nab:車|Head:Ncda:外)|time:Dd:早已|Head:VC1:擠滿|aspect:Di:了|theme:NP(predication:VP‧的(head:VP(Head:VC2:看|goal:NP(Head:Nv4:日出))|Head:DE:的)|Head:Nab:遊客)))
+        crowded,VC1,human,NP,S,1,NP-VP‧的-VP-VC2-NP-Nv4-DE-Nab,False,Di-empty,surname-external-
+->semantic type:才(unscholarly-humanized-Null_null-sequence-learning)知道(understand)車(LandVehicle-surname-fasten-transport)外(external)早已(Vgoingon)擠滿(crowded)了(finish-Vgoingon-particle)看(look-regard-try)日出(rise)的(tool-particle-over)遊客(humanized)
+->POS:seems no problem with 中央研究院平衡語料庫的內容與說明.txt
+
+14. S(theme:NP(Head:Nhaa:我)|Head:VJ1:認識|aspect:Di:了|goal:NP(property:NP‧的(head:NP(quantifier:Neqa:更多|Head:Nab:同學)|Head:DE:的)|Head:Nac:優點))
+        advantage,Nac,human,NP‧的,NP,-1,NP‧的-NP-Neqa-Nab-DE,False,empty-Nac,BecomeMore-human-tool-advantage
+->semantic type:我(speaker)認識(understand)了(finish-Vgoingon-particle)更多(BecomeMore-RateValue)同學(humanized)的(tool-particle-over)優點(advantage)
+->POS:seems no problem with 中央研究院平衡語料庫的內容與說明.txt
+
+15. S(time:DM:那天|theme:NP(Head:Nhaa:我)|quantity:Daa:正好|Head:VH11:放假)
+        enjoy,VH11,QuantityValue,DM,S,-1,DM,False,empty-NP,QuantityValue-speaker-proper-enjoy
+->semantic type:那天(no semantic type)我(speaker)正好(proper-accidental)放假(enjoy)
+->POS:seems no problem with 中央研究院平衡語料庫的內容與說明.txt
+
+20. S(time:Dd:已經|time:Dd:逐漸|companion:PP(Head:P35:與|DUMMY:NP(quantifier:Neqa:許多|Head:Nac:國家))|Head:VC2:進行|complement:VP(manner:Dh:多方|Head:VC2:接觸))
+        conduct,VC2,associate,VP,S,1,VP-Dh-VC2,False,VC2-empty,AspectValue-stepwise-partner-QuantityValue-country-conduct-human-associate
+->semantic type:已經(Vgoingon)逐漸(stepwise)與(fish-partner-or)許多(RateValue)國家(UpperVolta)進行(conduct)多方(humanized)接觸(mating-touch)
+->POS:seems no problem with 中央研究院平衡語料庫的內容與說明.txt
+
+21. S(experiencer:NP(Head:Nhaa:他)|goal:PP(Head:P31:對|DUMMY:VP(reason:Dj:是否|Head:VC1:到|goal:NP(Head:Ncb:體育會)))|time:Dd:已|negation:Dc:不|Head:VK1:在意|particle:Ta:了)
+        PayAttention,VK1,facing...NULL,P31,S,-1,PP-P31-VP-Dj-VC1-NP-Ncb,False,NP-Dd,3rdPerson-facing-Ques-arrive-no-type-AspectValue-event-PayAttention-finish
+->semantic type:他(other-3rdPerson)對(fit-facing-correct-ExpressAnger-refute-RateValue-target)是否(Ques)到(arrive-Vachieve-accomplishment-Vgoingon-LocationFin-range-TimeFin)體育會(affairs)已(Vgoingon)不(deceive)在意(ParticularAbout)了(finish-Vgoingon-particle)
+->POS:seems no problem with 中央研究院平衡語料庫的內容與說明.txt
+
+23. VP(Head:VK2:造成|range:S(theme:NP(Head:Ncb:股市)|Head:VH11:疲弱不振))
+        ResultIn,VK2,state,S,VP,1,S-NP-Ncb-VH11,False,VK2-empty,ResultIn-place-state
+->semantic type:造成(ResultIn)股市(UpperVolta)疲弱不振(no semantic type)
+->POS:seems no problem with 中央研究院平衡語料庫的內容與說明.txt
+
+VP(time:PP(Head:P21:在|DUMMY:GP(DUMMY:DM:四天|Head:Ng:內))|epistemics:Dbaa:絕對|deontics:Dbab:可以|Head:VC2:批到|goal:NP(Head:Nab:彩券))
+        act,VC2,be...NULL,P21,VP,-1,PP-P21-GP-DM-Ng,False,empty-Dbaa,be-BodyFluid-internal-extreme-ish-act-coupon
+->semantic type:在(situated-null-LocationThru-mean-Vgoingon-TimePoint-whatever)四天(no semantic type)內(internal)絕對(extreme-almost)可以(ish-mediocre-almost)批到(no semantic type)彩卷(coupon)
+->POS:seems no problem with 中央研究院平衡語料庫的內容與說明.txt

@@ -1,0 +1,48 @@
+\begin{thebibliography}{}
+
+\bibitem[Gildea and Hockenmaier, 2003]{Gildea03identifyingsemantic}
+Gildea, D. and Hockenmaier, J. (2003).
+\newblock Identifying semantic roles using combinatory categorial grammar.
+
+\bibitem[Gildea and Jurafsky, 2002]{Gildea:2002}
+Gildea, D. and Jurafsky, D. (2002).
+\newblock Automatic labeling of semantic roles.
+\newblock {\em Comput. Linguist.}, 28(3):245--288.
+
+\bibitem[Johansson and Nugues, 2008]{Johansson08theeffect}
+Johansson, R. and Nugues, P. (2008).
+\newblock The effect of syntactic representation on semantic role labeling.
+
+\bibitem[Pradhan et~al., 2004]{Pradhan04shallowsemantic}
+Pradhan, S., Ward, W., Hacioglu, K., and Martin, J.~H. (2004).
+\newblock Shallow semantic parsing using support vector machines.
+
+\bibitem[Pradhan et~al., 2008]{Pradhan:2008:TRS:1403157.1403163}
+Pradhan, S.~S., Ward, W., and Martin, J.~H. (2008).
+\newblock Towards robust semantic role labeling.
+\newblock {\em Comput. Linguist.}, 34(2):289--310.
+
+\bibitem[Sun and Jurafsky, 2004]{sun-jurafsky:2004:HLTNAACL}
+Sun, H. and Jurafsky, D. (2004).
+\newblock Shallow semantc parsing of chinese.
+\newblock In Susan~Dumais, D.~M. and Roukos, S., editors, {\em HLT-NAACL 2004:
+  Main Proceedings}, pages 249--256, Boston, Massachusetts, USA. Association
+  for Computational Linguistics.
+
+\bibitem[Swanson and Gordon, 2006]{Swanson06acomparison}
+Swanson, R. and Gordon, A.~S. (2006).
+\newblock A comparison of alternative parse tree paths for labeling semantic
+  roles.
+\newblock In {\em In Proceedings of COLING/ACL-2006}.
+
+\bibitem[Xue, 2004]{Xue04calibratingfeatures}
+Xue, N. (2004).
+\newblock Calibrating features for semantic role labeling.
+\newblock In {\em In Proceedings of EMNLP 2004}, pages 88--94.
+
+\bibitem[Xue, 2008]{Xue:2008:LCP:1403157.1403161}
+Xue, N. (2008).
+\newblock Labeling chinese predicates with semantic roles.
+\newblock {\em Comput. Linguist.}, 34(2):225--255.
+
+\end{thebibliography}

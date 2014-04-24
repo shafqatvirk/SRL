@@ -1,0 +1,13 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: eacl2014-SRL.aux
+The style file: acl.bst
+Database file #1: eacl2014.bib
+Repeated entry---line 89 of file eacl2014.bib
+ : @inproceedings{Lin:2010:CSR:1909632.1912231
+ :                                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 104 of file eacl2014.bib
+ : @inproceedings{Zapirain:2007:USS:1621474.1621551
+ :                                                 ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "keylist"
+(There were 2 error messages)

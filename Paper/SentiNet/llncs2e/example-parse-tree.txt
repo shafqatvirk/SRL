@@ -1,0 +1,2 @@
+(ROOT (S (NP (PRP I)) (VP (VP (VBD went) (PP (TO to) (NP (DT the) (NN market)))) (CC and) (VP (VBD bought) (NP (NP (NNS fruits)) (CC and) (NP (JJ fresh) (NNS vegetables))))) (. .)))
+(ROOT (S (NP (PRP I)) (VP (VP (VBD went) (PP (TO to) (NP (DT the) (NN market)))) (CC and) (VP (VBD bought) (NP (NP (NNS fruits)) (CC and) (NP (JJ fresh) (NNS vegetables)))))))

@@ -1,0 +1,13 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: eacl2014.aux
+The style file: acl.bst
+Database file #1: eacl2014.bib
+I was expecting a `,' or a `}'---line 47 of file eacl2014.bib
+ :   author  = Keh-Jiann 
+ :                       Chen and Chi-Ching Luo and Ming-Chung Chang and  Feng- Yi Chen and ChaoJan Chen and Chu-Ren Huang,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Gusfield:97"
+Warning--I didn't find a database entry for "Aho:72"
+Warning--I didn't find a database entry for "Chandra:81"
+Warning--I didn't find a database entry for "APA:83"
+Warning--I didn't find a database entry for "ACM:83"
+(There was 1 error message)

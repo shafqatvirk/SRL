@@ -1,0 +1,75 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citename{Chen and Rambow}2003]{Chen:2003:UDL:1119355.1119361}
+John Chen and Owen Rambow.
+\newblock 2003.
+\newblock Use of deep linguistic features for the recognition and labeling of
+  semantic arguments.
+\newblock In {\em Proceedings of the 2003 Conference on Empirical Methods in
+  Natural Language Processing}, EMNLP '03, pages 41--48, Stroudsburg, PA, USA.
+  Association for Computational Linguistics.
+
+\bibitem[\protect\citename{Chen \bgroup et al.\egroup }2003]{sinica-treebank}
+Keh-Jiann Chen, Chi-Ching Luo, Ming-Chung Chang, Feng-Yi Chen, ChaoJan Chen,
+  and Chu-Ren Huang.
+\newblock 2003.
+\newblock Sinica treebank: Design criteria, representational issues and
+  implementation.
+\newblock {\em Anne Abeille (Ed.) Treebanks Building and Using Parsed Corpora.
+  Language and Speech series. Dordrecht:Kluwer}, pages pp231--248.
+
+\bibitem[\protect\citename{Gildea and Jurafsky}2002]{Gildea:2002}
+Daniel Gildea and Daniel Jurafsky.
+\newblock 2002.
+\newblock Automatic labeling of semantic roles.
+\newblock {\em Comput. Linguist.}, 28(3):245--288, September.
+
+\bibitem[\protect\citename{Lin \bgroup et al.\egroup
+  }2010]{Lin:2010:CSR:1909632.1912231}
+Xiaojun Lin, Meng Zhang, and Xihong Wu.
+\newblock 2010.
+\newblock Chinese semantic role labeling with hierarchical semantic knowledge.
+\newblock In {\em Proceedings of the 2010 International Conference on
+  Electrical and Control Engineering}, ICECE '10, pages 583--586, Washington,
+  DC, USA. IEEE Computer Society.
+
+\bibitem[\protect\citename{Park and Rim}2005]{Park:2005:MEB:1706543.1706583}
+Kyung-Mi Park and Hae-Chang Rim.
+\newblock 2005.
+\newblock Maximum entropy based semantic role labeling.
+\newblock In {\em Proceedings of the Ninth Conference on Computational Natural
+  Language Learning}, CONLL '05, pages 209--212, Stroudsburg, PA, USA.
+  Association for Computational Linguistics.
+
+\bibitem[\protect\citename{Tan \bgroup et al.\egroup }2009]{tan-wang-2009}
+Yongmei Tan, Xu~Wang, and Yong Chen.
+\newblock 2009.
+\newblock Chinese semantic role labeling using crfs and svms.
+\newblock In {\em Natural Language Processing and Knowledge Engineering, 2009.
+  NLP-KE 2009. International Conference on}, pages 1--5.
+
+\bibitem[\protect\citename{Xue}2004]{Xue04calibratingfeatures}
+Nianwen Xue.
+\newblock 2004.
+\newblock Calibrating features for semantic role labeling.
+\newblock In {\em In Proceedings of EMNLP 2004}, pages 88--94.
+
+\bibitem[\protect\citename{You and Chen}2004]{you-chen:2004}
+Jia-Ming You and Keh-Jiann Chen.
+\newblock 2004.
+\newblock Automatic semantic role assignment for a tree structure.
+\newblock In Oliver Streiter and Qin Lu, editors, {\em ACL SIGHAN Workshop
+  2004}, pages 109--115, Barcelona, Spain, July. Association for Computational
+  Linguistics.
+
+\bibitem[\protect\citename{Zapirain \bgroup et al.\egroup
+  }2007]{Zapirain:2007:USS:1621474.1621551}
+Be\~{n}at Zapirain, Eneko Agirre, and Llu\'{\i}s M\`{a}rquez.
+\newblock 2007.
+\newblock Ubc-upc: Sequential srl using selectional preferences: An aproach
+  with maximum entropy markov models.
+\newblock In {\em Proceedings of the 4th International Workshop on Semantic
+  Evaluations}, SemEval '07, pages 354--357, Stroudsburg, PA, USA. Association
+  for Computational Linguistics.
+
+\end{thebibliography}
