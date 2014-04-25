@@ -10,7 +10,7 @@
 \usepackage{booktabs}
 %\urldef{\mailsa}\path|{alfred.hofmann, ursula.barth, ingrid.haas, frank.holzwarth,|
 %\urldef{\mailsb}\path|anna.kramer, leonie.kunz, christine.reiss, nicole.sator,|
-\urldef{\mailsc}\path|virk.shafqat@gmail.com, andycyrus@gmail.com, lwku@iis.sinica.edu.tw|    
+\urldef{\mailsc}\path|{virk.shafqat, andycyrus}@gmail.com, lwku@iis.sinica.edu.tw|    
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
 
@@ -59,16 +59,16 @@ Academia Sinica Taiwan\\
 
 
 \begin{abstract}
-We present a semantic parsing system to decompose a sentence into semantic-expressions/concepts for ESWC'14 semantic analysis challenge. The proposed system has a pipeline architecture, and is based on syntactic parsing and semantic role labeling (SRL) of the candidate sentence. As to the former task, we use Stanford English parser; as to the later task, we use an in-house developed SRL system. The "concepts" are formulated from syntactically and semantically annotated sentences using a set of hand-build concept-formulation patterns. We also compare proposed system's performance to SenticNet with the help of few examples.
+We present a semantic parsing system to decompose a sentence into \textit{semantic-expressions/concepts} for ESWC'14 semantic analysis challenge. The proposed system has a pipeline architecture, and is based on syntactic parsing and semantic role labeling (SRL) of the candidate sentence. As to the former task, we use Stanford English parser; as to the later task, we use an in-house developed SRL system. The \textit{concepts} are formulated from syntactically and semantically annotated sentences using a set of hand-build concept-formulation patterns. We also compare proposed system's performance to SenticNet with the help of few examples.
 \keywords{Syntactic Parsing, Semantic Parsing, Semantic Role Labeling, Concept Formulation Templates}                 
 \end{abstract}
 \section{Introduction}
 Natural languages are both complex and ambiguous. Unless machines are capable of handling these issues in an intelligent way, building smart natural language processing (NLP) applications is a tough and challenging task. Maybe, one way to ease this toughness is to try to make computers understand natural language text. For the same purpose, the trend in NLP is shifting from exploring 'what it is' to 'what it means' (i.e. from syntax to semantics). 
 
-During the last couple of decades, a number of sub-fields have emerged under the umbrella term \textit{computational semantics}, and one such sub-field is \textit{semantic parsing}. This and many other such subfields (e.g. sentiment analysis, textual entailment, question answering, etc.) are among the rapidly growing sub-areas of NLP. The research community has recognized their worth and importance in recent times. This can be realized by the fact that their are many workshops, and special tracks/challenges in conferences, dedicated to these tasks. The ESWC'14 challenge on semantic analysis is one among those special challenges, and is scheduled to be held together with the 11th European Semantic Web Conference 2014 (ESWC'14). The challenge has a number of advanced tasks in addition to an elementary task on polarity detection. The advanced task\#2 is titled "Semantic Parsing", and refers to the task of de-constructing natural language text into a number of semantic-expressions/concepts. Though the term semantic-expression/concept is very general in itself, and is hard to define clearly, we take it to be a single-word/multi-word expression for which we have semantics.  
+During the last couple of decades, a number of sub-fields have emerged under the umbrella term \textit{computational semantics}, and one such sub-field is \textit{semantic parsing}. This and many other such subfields (e.g. sentiment analysis, textual entailment, question answering, etc.) are among the rapidly growing sub-areas of NLP. The research community has recognized their worth and importance in recent times. This can be realized by the fact that their are many workshops, and special tracks/challenges in conferences, dedicated to these tasks. The ESWC'14 challenge on semantic analysis is one among those special challenges, and is scheduled to be held together with the 11\textsuperscript{th} European Semantic Web Conference 2014 (ESWC'14). The challenge has a number of advanced tasks in addition to an elementary task on polarity detection. The advanced task\#2 is titled "Semantic Parsing", and refers to the task of de-constructing natural language text into a number of \textit{semantic-expressions/concepts}. Though the term \textit{semantic-expression/concept} is very general in itself, and is hard to define clearly, we take it to be a single-word/multi-word expression for which we have semantics.  
 
 
-In this paper, we propose a system for \textit{semantic parsing} in the context of task\#2 of the challenge. The system has a pipeline architecture and relies on syntactic and semantic analysis of the candidate sentence. We use Stanford English parser \cite{stanford} for syntactic parsing, and an in-house developed semantic role labeling (SRL) system for semantic interpretations. To formulate the concepts into desired format, we propose a set of hand-build concept formulation templates. 
+In this paper, we propose a system for semantic parsing in the context of task\#2 of the challenge. The system has a pipeline architecture and relies on syntactic and semantic analysis of a candidate sentence. We use Stanford English parser \cite{stanford} for syntactic parsing, and an in-house built semantic role labeling (SRL) system for semantic interpretations. To formulate the concepts into desired format, we propose a set of hand-build concept formulation templates. 
 %The system takes a sentences as input and extract a number of and has a number of potential applications particularly in the fields of information retrieval, question answering, text summarization and machine translation. 
                 
 \section{Proposed System}
@@ -102,7 +102,7 @@ The architecture of the proposed system is shown in Fig.~\ref{fig:sys-archi}. It
 \caption{Concept Templates}
 \label{tab:concept-template}
 \end{table}
-Here, Pred and ARG1, ARG2, ARGM-LOC, ARGM-GOL, etc. refer to the predicate, and to the semantic role classes used in the prop-bank labeling scheme respectively (see \cite{prop-guidlines} for details on these classes). 
+Here, Pred and ARG1, ARG2, ARGM-LOC, ARGM-GOL, etc. refer to the predicate, and to the semantic role classes used in the prop-bank labeling scheme (see \cite{prop-guidlines} for details on these classes). 
 
 %Note that how the predicate of a sentence together with the semantic roles of its arguments are used to formulate semantic-expressions/concepts. An example follows in the next section.
 %As an example, if we have the sentence \textit{'Pierre Vinken, 61 years old, will join the board as a non-executive director Nov. 29'}, the predicate 'join' has five semantic arguments: \{ ARG0:Pierre Vinken, 61 years old, ARG1:the board, ARGM-MOD:will, ARGM-PRD:as a non-executive director, ARGM-TMP:Nov. 29 \}. The predicate and its arguments can be used to extract the following semantic-expressions/concepts using the template given in \ref{tab:concept-template}.
@@ -116,7 +116,7 @@ Here, Pred and ARG1, ARG2, ARGM-LOC, ARGM-GOL, etc. refer to the predicate, and 
 %Since the coverage and performance of a SRL system can not guaranteed to be 100\%, largely because probabilistic systems have their limitations, syntactic information may provide  
 
 \section{An Example} 
-To explain how our proposed system works at different levels, lets take an example sentence: \textit{This film served as great entertainment for young people.}, and go through all the steps that the proposed system will perform to extract the semantic-expressions/concepts. As a first step the sentence will be syntactically parsed, which will be then semantically annotated by the SRL system. The resulting syntactically and semantically annotated tree is shown in Fig \ref{fig:parse-tree}.
+To explain how our proposed system works at different levels, lets take an example sentence: \textit{This film served as great entertainment for young people.}, and go through all the steps that the proposed system will perform to extract \textit{concepts}. As a first step the sentence is syntactically parsed, which is semantically annotated by the SRL system as the second step. The resulting syntactically and semantically annotated tree is shown in Fig \ref{fig:parse-tree}.
 \begin{figure}[!h]
 \centering
 \includegraphics[width=.8\textwidth,height=5cm]{parse-tree6.jpg}
@@ -142,14 +142,14 @@ From the semantically annotated tree, the extractable predicate-argument informa
 \label{tab:pred-arg-info}
 \end{table}    
 \section{Comparison to SenticNet}
-At the current stage of our experiments, we did not perform any automatic comparison or performance measurement leaving it to the official evaluation during the challenge days. However to give an idea to the reviewers, Table \ref{tab:sen-conc-compare} lists a couple of example sentences together with the extracted concepts both by the proposed system\footnote{A web-demo of the system is available at:}, and SenticNet\footnote{We used web-demo available at () to generate these concepts} \cite{senticnet}. We leave it to the reviewers to compare the outputs. 
+At the current stage of our experiments, we did not perform any automatic comparison or performance measurement leaving it to the official evaluation during the challenge days. However to give an idea to the reviewers, Table \ref{tab:sen-conc-compare} lists a couple of example sentences together with the extracted\footnote{The SenticNet concepts were extracted using its web-demo version available at (http://sentic.net/demo/)} concepts both by the proposed system\footnote{A web-demo of the proposed system is available at ()}, and SenticNet \cite{senticnet}. We leave it to the reviewers to compare the outputs. 
 \begin{table}[!h]
 \centering
 %\begin{tabular}{|p{2.5cm}|p{5.5cm}|p{3.8cm}|}
 \begin{tabular}{>{\raggedright}p{3cm}>{\raggedright}p{5.5cm}p{3.5cm}<{\raggedright}}
 \hline \textbf{Sentence} & \textbf{Proposed System's Output}  & \textbf{SenticNet's Output} \\ 
-\hline I went to the market and bought fresh fruits and vegetables and came back &(1)bought\_fresh\_fruits (2)I\_went (3)I\_bought (4)vegetables (5)went\_to\_ the\_market (6)bought\_vegetables (7)fresh\_fruits (8)came\_\{in\_the\_direction\}\_ back (9)to\_the\_market (10)came\_I &(1)go\_to\_market (2)market (3)buy\_fruit (4)buy\_vegetable (5)fresh\_fruit (6)some\_fruit  (7)back\_come\\ 
-\hline We also ordered the bedding and got the pillow & (1)got\_the\_pillow (2)the\_pillow (3)We\_got (4)the\_bedding (5)We\_order (7)order\_also (8)order\_the\_bedding & (1)also\_order (2)order\_bed (3)bed (4)get\_pillow (5)pillow \\ 
+\hline I went to the market, bought fresh fruits and vegetables and came back &(1)bought\_fresh\_fruits (2)I\_went (3)I\_bought (4)vegetables (5)bought\_vegetables (6)the\_market (7)fresh\_fruits (8)went\_ the\_market  (9)came\_\{in\_the\_direction\}\_ back  (10)came\_I &(1)go\_to\_market (2)market (3)buy\_fruit (4)buy\_vegetable (5)fresh\_fruit (6)back\_come\\ 
+\hline We also ordered the bedding and got the pillow & (1)got\_the\_pillow (2)the\_pillow (3)We\_got (4)the\_bedding (5)We\_order (6)order\_also (7)order\_the\_bedding & (1)also\_order (2)order\_bed (3)bed (4)get\_pillow (5)pillow \\ 
 \hline 
 \end{tabular}  
 \caption{Example Sentences and Extracted Concepts}
@@ -202,7 +202,7 @@ We would like to acknowledge that this work was partially supported by National 
 %\label{tab:eval-results}
 %\end{table}       
 %To evaluate the performance of our proposed systems, we compare their output to the output produced by SentiNet. For a small set of 100 sentences, three sets of concepts are produced using 'Sys-SP', 'Sys-SRL', and 'SentiNet'. An human evaluator then compares their performance. The comparison method is as: For each concept generated by 'SentiNet', if the same concept is generated by any of the proposed system (i.e. 'Sys-SP' or 'Sys-SRL'), the proposed system gets one point. This process is repeated for each of the 100 test sentences. Additional, if the proposed system generates an additional concept, which the human evaluator considers to be useful, the proposed system gets an extra point. Similarly, the proposed system gets a penalty of one point for every useless generated concept. Considering the fact that no standard evaluation parameters/methods were suggested by the challenge organizers, nor any evaluation and/or test data was given, we propose the above mentioned evaluation method. The evaluation results for 100 test sentences are given in Table N.     
-
+\newpage
 \begin{thebibliography}{4}
 \bibitem{zeprian} Be\'{n}at Zapirain and Eneko Agirre and Llu\'{\i}s M\`{a}rquez. Ubc-upc: Sequential srl using selectional preferences: An aproach with maximum entropy markov models. In Proceedings of the 4th International Workshop on Semantic Evaluations, pages 354-357, Stroudsburg, PA, USA. Association for Computational Linguistics. 2007.
 \bibitem{prop-guidlines} Claire Bonial, Jena Hwang, Julia Bonn, Kathryn Conger, Olga Babko-Malaya and Martha Palmer, English PropBank Annotation Guidelines, Center for Computational Language and Education Research Institute of Cognitive Science University of Colorado at Boulder, Nov, 2012.
@@ -214,7 +214,7 @@ We would like to acknowledge that this work was partially supported by National 
 \bibitem{penn} Mitchell P., Beatrice Santorini and Mary Ann Marcinkiewicz, Building a Large Annotated Corpus of English: The Penn Treebank: COMPUTATIONAL LINGUISTICS, 10(2), pages 313-330, 1993.
 \bibitem{nianwen-2004} Nianwen Xue. Calibrating features for semantic role labeling. In Proceedings of EMNLP 2004, pages 88-94. 2004.
 \bibitem{johansson} Richard Johansson and Pierre Nuges, The Effect of Syntactic Representation on Semantic Role Labeling, Proceedings of the 22nd International Conference on Computational Linguistics (Coling 2008), pages 393-400, Manchester, August 2008.
-\bibitem{pradan} Sammer Pradhan, Wayne Ward, Kadri Haciuglu, James Martin, and Dan Jurafsky. 2004. Shallow semantic parsing using support vector machines. In Proceedings of HLT/NAACL-2004
+\bibitem{pradan} Sammer Pradhan, Wayne Ward, Kadri Haciuglu, James Martin, and Dan Jurafsky. 2004. Shallow semantic parsing using support vector machines. In Proceedings of HLT/NAACL-2004.
 
 %\bibitem{framenet} Collin F. Baker, Charles J. Fillmore and John B. Lowe, The Berkeley FrameNet Project, International Computer Science Institute 1947 Center St. Suite 600 Berkeley, Calif., 94704.
 
