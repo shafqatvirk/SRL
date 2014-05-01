@@ -24,6 +24,7 @@ def build(tree_head_dict):
 		#print pred_trees
 		identif_file = open('../identifier/maxent/train.test','w')
 		classif_file = open('../classifier/maxent/train.test','w')
+		preds_file = open('preds.txt','w')
 			
 		for (pred,pred_terNo) in pred_trees[:]:
 			pruned = pruning(parsed,pred,pred_terNo,[])
@@ -49,13 +50,19 @@ def build(tree_head_dict):
 			
 				subcatStar = find_subcat(c.parent)
 				subcatAt = find_subcat(c)
+				flat_argument = '_'.join([w.rstrip() for w in my_flatten(c,[])])
 				# features for identification
 				identif_file.write('h='+str(h)+' h_pos='+str(h_pos)+' path='+str(path)+' t_word_pls_pt='+t_word_pls_pt+' t_word_pls_h_word='+t_word_pls_h_word+' distance_pls_t_word='+distance_pls_t_word+ ' ?\n')
 				#print 'h='+str(h)+' h_pos='+str(h_pos)+' path='+str(path)+' t_word_pls_pt='+t_word_pls_pt+' t_word_pls_h_word='+t_word_pls_h_word+' distance_pls_t_word='+distance_pls_t_word+ ' ?'
 				# features for classification
 				classif_file.write('h='+str(h)+' h_pos='+str(h_pos)+' h_word='+str(h)+' h_word_pos='+str(h_pos)+' path='+str(path)+' t_word_pls_pt='+t_word_pls_pt+' t_word_pls_h_word='+t_word_pls_h_word+' subcat='+str(subcat)+ ' subcatAt='+str(subcatAt)+ ' subcatStar='+str(subcatStar)+ ' ?\n')
-			
-	 
+				preds_file.write(t_word+' '+flat_argument+'\n')
+def my_flatten(node,flat_list):
+	if node.data != None and node.data not in ['IN','TO'] and node.word != None and node.word != []:
+		flat_list.append(node.word)
+	for ch in node.children:
+		my_flatten(ch,flat_list)
+	return flat_list		 
 					
 if __name__ == "__main__":
  import sys

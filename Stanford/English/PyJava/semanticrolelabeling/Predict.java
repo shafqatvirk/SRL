@@ -97,26 +97,6 @@ public class Predict {
     int ai = 0;
 	outputFileName = "";
 	if (args.length > 0) {
-      /*while (args[ai].startsWith("-")) {
-        if (args[ai].equals("-real")) {
-          real = true;
-        }
-        else if (args[ai].equals("-perceptron")) {
-          type = "perceptron";
-        }
-        else {
-          usage();
-        }
-        ai++;
-      }    
-      dataFileName = args[ai++];
-      if (args.length > ai) { 
-        modelFileName = args[ai++];
-      }
-      else {
-          modelFileName = dataFileName.substring(0,dataFileName.lastIndexOf('.')) + "Model.txt";
-      }
-	} */
 		dataFileName = args[0];
 		modelFileName = dataFileName.substring(0,dataFileName.lastIndexOf('.')) + "Model.txt";
 		//System.out.println(dataFileName);

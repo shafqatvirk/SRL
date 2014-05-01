@@ -2,9 +2,9 @@ import sys
 sys.path.append("../shared")
 from prepareData import *
 from buildModelAuxiliaries import *
-import nltk
+#import nltk
 import os
-import itertools
+#import itertools
 from nltk.stem.snowball import SnowballStemmer
 #from nltk.corpus import propbank_ptb
 def build(tree_head_dict):
@@ -13,11 +13,6 @@ def build(tree_head_dict):
 		input = open('parse-output.txt')
 		input_tree_lines = input.readlines()
 		tree = ' '.join([l.rstrip().lstrip().rstrip(' ').lstrip(' ')  for l in input_tree_lines])
-		#print tree
-		#if str(inst).find('*') == -1 and str(inst).find(',') == -1:
-		#arguments = []
-		#tree = inst.tree
-		#tree.draw()
 		(parsed,r) = parseExpr(str(tree),0,0)
 		#print parsed.data
 		pred_trees =  find_pred_trees(parsed,[])
@@ -29,24 +24,25 @@ def build(tree_head_dict):
 			pruned = pruning(parsed,pred,pred_terNo,[])
 			#print 
 			t_word = str(stemmer.stem(pred.word))
-			#t_w_pos = pred.data
-			#pred_parrent = find_pred_parrent(parsed,pred_terNo,None)
-			#subcat = find_subcat(pred_parrent)
 			for c in pruned:
 				identifier_line = identif_output.readline()
 				identifier = identifier_line.rstrip().split(' ')[0]
 				classifier_line = classif_output.readline()
 				classifier = classifier_line.rstrip().split(' ')[0]
 				if identifier == 'yes':
-						flat_argument = ' '.join([w.rstrip() for w in str(nltk.Tree(''.join(print_tree_srl(c,[]))).flatten()).split(' ')[1:]]).rstrip(')')
+						#flat_argument = ' '.join([w.rstrip() for w in str(nltk.Tree(''.join(print_tree_srl(c,[]))).flatten()).split(' ')[1:]]).rstrip(')')
+						flat_argument = ' '.join([w.rstrip() for w in my_flatten(c,[])])
 						concepts.append((t_word,classifier,str(flat_argument)))
 		
 		#print ''.join(print_tree_srl(parsed,[]))			
 		arg_list2 = []
 		for (pred_lemma,label,arg_str) in concepts:
-								flat_arg_str = arg_str.replace(' ','_')
+						flat_arg_str_list = [arg.replace(' ','_') for arg in arg_str.split(' and ')]
+						for flat_arg_str in flat_arg_str_list:
+								#flat_arg_str = arg_str.replace(' ','_')
 								if label.rstrip() == 'ARG0':
 									arg_list2.append(flat_arg_str+'_'+pred_lemma)
+									arg_list2.append(flat_arg_str)
 								elif label.rstrip() == 'ARGM-COM':
 									arg_list2.append(pred_lemma+'_{with}_'+flat_arg_str)
 									arg_list2.append(flat_arg_str)
@@ -79,17 +75,19 @@ def build(tree_head_dict):
 								else:
 									arg_list2.append(pred_lemma+'_'+flat_arg_str)
 									arg_list2.append(flat_arg_str)
-		for concept in arg_list2:
+		for concept in list(set(arg_list2)):
 			print concept
-					
+def my_flatten(node,flat_list):
+	if node.data != None and node.data not in ['IN','TO'] and node.word != None and node.word != []:
+		flat_list.append(node.word)
+	for ch in node.children:
+		my_flatten(ch,flat_list)
+	return flat_list
 if __name__ == "__main__":
  import sys
  try:
 	tree_head_dict = build_tree_head_dict()
-	#(roles_7_dict,total_7_dict,roles_6a_dict,total_6a_dict,roles_6b_dict,total_6b_dict,roles_6c_dict,total_6c_dict,roles_6d_dict,total_6d_dict,roles_5a_dict,total_5a_dict,roles_5b_dict,total_5b_dict,roles_5c_dict,total_5c_dict,roles_5d_dict,total_5d_dict,roles_3a_dict,total_3a_dict,roles_2a_dict,total_2a_dict,roles_1a_dict,total_1a_dict,roles_baseline_dict,total_baseline_dict) = build()
 	build(tree_head_dict)
-	#build()
-	#output_model(roles_7_dict,total_7_dict,roles_6a_dict,total_6a_dict,roles_6b_dict,total_6b_dict,roles_6c_dict,total_6c_dict,roles_6d_dict,total_6d_dict,roles_5a_dict,total_5a_dict,roles_5b_dict,total_5b_dict,roles_5c_dict,total_5c_dict,roles_5d_dict,total_5d_dict,roles_3a_dict,total_3a_dict,roles_2a_dict,total_2a_dict,roles_1a_dict,total_1a_dict,roles_baseline_dict,total_baseline_dict)
  except:
 	print >>sys.stderr, __doc__
 	raise

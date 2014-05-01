@@ -25,6 +25,7 @@ def build(tree_head_dict,tree):
 		#print pred_trees
 		identif_file = open('identifier.test','w')
 		classif_file = open('classifier.test','w')
+		pred_file = open('pred.test','w')
 			
 		for (pred,pred_terNo) in pred_trees[:]:
 			pruned = pruning(parsed,pred,pred_terNo,[])
@@ -50,13 +51,25 @@ def build(tree_head_dict,tree):
 			
 				subcatStar = find_subcat(c.parent)
 				subcatAt = find_subcat(c)
+				flat_argument = '_'.join([w.rstrip() for w in my_flatten(c,[])])
 				# features for identification
 				identif_file.write('h='+str(h)+' h_pos='+str(h_pos)+' path='+str(path)+' t_word_pls_pt='+t_word_pls_pt+' t_word_pls_h_word='+t_word_pls_h_word+' distance_pls_t_word='+distance_pls_t_word+ ' ?\n')
-				#print 'h='+str(h)+' h_pos='+str(h_pos)+' path='+str(path)+' t_word_pls_pt='+t_word_pls_pt+' t_word_pls_h_word='+t_word_pls_h_word+' distance_pls_t_word='+distance_pls_t_word+ ' ?'
+				#print 'h='+str(h)+' h_pos='+str(h_pos)+' path='+str(path)+' t_word_pls_pt='+t_word_pls_pt+' t_word_pls_h_word='+t_word_pls_h_word+' distance_pls_t_word='+distance_pls_t_word+ ' ?\n'
 				# features for classification
 				classif_file.write('h='+str(h)+' h_pos='+str(h_pos)+' h_word='+str(h)+' h_word_pos='+str(h_pos)+' path='+str(path)+' t_word_pls_pt='+t_word_pls_pt+' t_word_pls_h_word='+t_word_pls_h_word+' subcat='+str(subcat)+ ' subcatAt='+str(subcatAt)+ ' subcatStar='+str(subcatStar)+ ' ?\n')
+				#print 'h='+str(h)+' h_pos='+str(h_pos)+' h_word='+str(h)+' h_word_pos='+str(h_pos)+' path='+str(path)+' t_word_pls_pt='+t_word_pls_pt+' t_word_pls_h_word='+t_word_pls_h_word+' subcat='+str(subcat)+ ' subcatAt='+str(subcatAt)+ ' subcatStar='+str(subcatStar)+ ' ?\n'
+				pred_file.write(t_word+' '+flat_argument+'\n')
+				#print t_word+' '+flat_argument+'\n'
+		identif_file.close()
+		classif_file.close()
+		pred_file.close()
 			
-	 
+def my_flatten(node,flat_list):
+	if node.data != None and node.data not in ['IN','TO'] and node.word != None and node.word != []:
+		flat_list.append(node.word)
+	for ch in node.children:
+		my_flatten(ch,flat_list)
+	return flat_list	 
 					
 if __name__ == "__main__":
  import sys
