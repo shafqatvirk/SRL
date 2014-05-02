@@ -16,7 +16,7 @@ import java.io.*;
  *
  */
 
-public class ConceptExtractorClient
+public class ConceptExtractorBatchClient
 {
     
     
@@ -32,12 +32,17 @@ public class ConceptExtractorClient
         {	
 			
 			// parsing
-			DataStream ds =
-		    new PlainTextByLineDataStream(
-			new FileReader(new File("input.txt")));
-			String sentence = (String)ds.nextToken() + (char) 13;
+			//DataStream ds =
+		    //new PlainTextByLineDataStream(
+			//new FileReader(new File("input.txt")));
+			//String sentence = (String)ds.nextToken() + (char) 13;
 			//System.out.println(str);
+			BufferedReader inputReader = new BufferedReader(new FileReader("input.txt"));
+			String sent;
+			while ((sent = inputReader.readLine()) != null)
+			{
 			System.out.println("Parsing....");
+			String sentence = sent + (char) 13;
 			
 			InetAddress address = InetAddress.getByName(host);
 			// Establish a socket connetion 
@@ -66,7 +71,8 @@ public class ConceptExtractorClient
                // System.out.println(br.readLine());
 			  }
 			
-        }
+            }
+		}
         catch (Exception e)
         {
 		String cause = e.getMessage();

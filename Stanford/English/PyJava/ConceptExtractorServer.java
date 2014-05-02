@@ -1,21 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2001 Chieu Hai Leong and Jason Baldridge
-//
-// This library is free software; you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public
-// License as published by the Free Software Foundation; either
-// version 2.1 of the License, or (at your option) any later version.
-//
-// This library is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Lesser General Public License for more details.
-//
-// You should have received a copy of the GNU Lesser General Public
-// License along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-//////////////////////////////////////////////////////////////////////////////   
-//package bdn;
+
 import semanticrolelabeling.*;
 import edu.stanford.nlp.trees.Tree;
 import java.net.*;
@@ -41,25 +24,13 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 
 
-/**
- * Test the model on some input.
- *
- * @author  Jason Baldridge
- * @version $Revision: 1.4 $, $Date: 2008/11/06 20:00:34 $
- */
 public class ConceptExtractorServer {
 	static ServerSocket socket1;
-	//static ServerSocket socket2;
-	//static ServerSocket socket3;
 	protected final static int port = 19999;
-	//protected final static int port2 = 19990;
-	//protected final static int port3 = 19980;
 	static Socket connection;
-	//static Socket connection2;
-	//static Socket connection3;
-	static boolean first;
-	static StringBuffer process;
-	//static String TimeStamp;
+	//static boolean first;
+	//static StringBuffer process;
+	
 	
     MaxentModel _model;
     ContextGenerator _cg = new BasicContextGenerator();
@@ -88,49 +59,29 @@ public class ConceptExtractorServer {
         ocs = _model.eval(contexts,values);
       }
       AllOutcomes=_model.getAllOutcomes(ocs);
-	  //System.out.println("best outcme: \n" + _model.getBestOutcome(ocs) + "\n");
-	  //System.out.println("all: \n" + _model.getAllOutcomes(ocs) + "\n");
 	  BestOutcomes=_model.getBestOutcome(ocs);
-	 
 	  start1=AllOutcomes.indexOf(BestOutcomes)+BestOutcomes.length()+1;
-	  //start1=AllOutcomes.indexOf(BestOutcomes);
 	  end1=start1+6;
-	  //System.out.println(_model.getBestOutcome(ocs)+" "+AllOutcomes.substring(start1,end1));
 	  return (_model.getBestOutcome(ocs)+" "+AllOutcomes.substring(start1,end1)+"\n");
-	  //System.out.println(AllOutcomes);
 	
     }
     
     private static void usage() {
       
     }
-
-    /**
-     * Main method. Call as follows:
-     * <p>
-     * java Predict dataFile (modelFile)
-     */
-	 
+ 
     public static void main(String[] args) {
 	try{
 	socket1 = new ServerSocket(port);
-	//socket2 = new ServerSocket(port2);
-	//socket3 = new ServerSocket(port3);
     int character;
 	
 	String  modelFileName,modelFileNameClassifier;
     boolean real = false;
-    String type = "maxent";
-    int ai = 0;
-	//outputFileName = "";
-
-	//dataFileName = args[0];
+    //String type = "maxent";
+    //int ai = 0;
+	
 	modelFileName = "identifierModel.txt";
 	modelFileNameClassifier = "classifierModel.txt";
-	//System.out.println(dataFileName);
-	//System.out.println(modelFileName);
-	//outputFileName = args[1];
-	//System.out.println(outputFileName);
 	
 	Parser parser = new Parser();
 	
@@ -153,21 +104,12 @@ public class ConceptExtractorServer {
 		
 		try{
 		connection = socket1.accept();
-		//connection2 = socket2.accept();
 		
-        //BufferedInputStream is = new BufferedInputStream(connection.getInputStream());
-        //InputStreamReader isr = new InputStreamReader(is);
         BufferedReader fromClient = new BufferedReader(
        		new InputStreamReader(connection.getInputStream()));
 			
-		//BufferedReader fromClient2 = new BufferedReader(
-       		//new InputStreamReader(connection2.getInputStream()));
-			
-		
-		//s = new StringBuffer();
 		String sentence;
 		sentence = fromClient.readLine();
-        //System.out.println("read from client"+s);
 		
 		Tree tree = parser.parse(sentence); 
 		System.out.println(tree);
@@ -192,8 +134,8 @@ public class ConceptExtractorServer {
 			{
 			//System.out.println("inside loop");
 			String pred = preds.readLine();
-			String identifierFeatures = line + (char) 13; 
-			String classifierFeature = classifier.readLine() + (char) 13;
+			String identifierFeatures = line; 
+			String classifierFeature = classifier.readLine();
 			
 			String identOutput = predictorIdentifier.eval(identifierFeatures.substring(0, identifierFeatures.lastIndexOf(' ')),real);
 			String classiOutput = predictorClassifier.eval(classifierFeature.substring(0, classifierFeature.lastIndexOf(' ')),real);

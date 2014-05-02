@@ -27,7 +27,7 @@ def build():
 									arg_list2.append(pred_lemma+'_{because}_'+flat_arg_str)
 									arg_list2.append(flat_arg_str)
 							elif label.rstrip() == 'ARGM-NEG':
-									arg_list2.append(pred_lemma+'_{not}_'+flat_arg_str)
+									arg_list2.append(pred_lemma+'_{negation}_'+flat_arg_str)
 									arg_list2.append(flat_arg_str)
 							elif label.rstrip() == 'ARGM-GOL':
 									arg_list2.append(pred_lemma+'_'+flat_arg_str)
