@@ -1,0 +1,32 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="http://sentic.net/challenge/sentence">
+<sentence xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/challenge/sentence">
+<text xmlns="http://sentic.net/challenge/" rdf:datatype="http://www.w3.org/TR/rdf-text/">
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/like_{negation}_not"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/is_it"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/did_{negation}_not"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/it"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/looks_funny_me"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/wear_will"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/I_did"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/I_wear"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/like_it"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/I_am"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/is_too_big_&_looks_funny_me"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/am_sorry"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/like_nor_will_I_wear_it"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/wear_it"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/sorry"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/too_big_&_looks_funny_me"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/like_it_nor_will_I_wear_it_it_is_too_big_&_looks_funny_me_did"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/not"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/it_is_too_big_&_looks_funny_me"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/nor_will_I_wear_it"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/will"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/funny_me"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/I_like"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/&_looks"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/like_{when}_it_is_too_big_&_looks_funny_me"/>
+</sentence>
+</rdf:Description>
+</rdf:RDF>

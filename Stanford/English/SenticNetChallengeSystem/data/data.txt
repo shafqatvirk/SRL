@@ -1,0 +1,12 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="http://sentic.net/challenge/sentence">
+<sentence xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/challenge/sentence">
+<text xmlns="http://sentic.net/challenge/" rdf:datatype="http://www.w3.org/TR/rdf-text/">
+Today I went to the mall and bought some desserts and a lot of very nice Christmas gifts. I am very happy about it.
+</text>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/go_mall"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/buy_dessert"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/buy_christmas_present"/>
+</sentence>
+</rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,48 @@
+wish I_had_not_have_gotten_it ARG1 0.9703
+
+wish I ARG0 0.9934
+
+wish . ARG0 0.3699
+
+had not ARGM-NEG 0.9462
+
+had have_gotten_it ARG1 0.6506
+
+had I ARG0 0.9786
+
+had wish ARG1 0.1007
+
+had I ARG0 0.9596
+
+had . ARG0 0.5111
+
+have gotten_it ARG2 0.5019
+
+have had ARGM-MOD 0.6157
+
+have not ARGM-NEG 0.9823
+
+have I ARG0 0.9551
+
+have wish ARG1 0.2600
+
+have I ARG0 0.8947
+
+have . ARG1 0.2964
+
+gotten it ARG1 0.9370
+
+gotten have ARG2 0.3160
+
+gotten had ARGM-MOD 0.5489
+
+gotten not ARGM-NEG 0.9695
+
+gotten I ARG0 0.9893
+
+gotten wish ARG1 0.1798
+
+gotten I ARG0 0.9753
+
+gotten . ARG0 0.4799
+

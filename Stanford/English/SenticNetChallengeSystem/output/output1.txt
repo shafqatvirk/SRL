@@ -1,0 +1,23 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="http://sentic.net/challenge/sentence">
+<sentence xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/challenge/sentence">
+<text xmlns="http://sentic.net/challenge/" rdf:datatype="http://www.w3.org/TR/rdf-text/">
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/the_package_containing_my_iPod_wallet"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/I_was"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/containing_my_iPod_wallet"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/was_disappointed_when_I_opened_up_the_package_containing_my_iPod_wallet"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/up"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/when_I_opened_up_the_package_containing_my_iPod_wallet_disappointed"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/I_have"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/my_iPod_wallet"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/say_I_was_disappointed_when_I_opened_up_the_package_containing_my_iPod_wallet"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/I_was_disappointed_when_I_opened_up_the_package_containing_my_iPod_wallet"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/I_opened"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/opened_the_package_containing_my_iPod_wallet"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/I_disappointed"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/opened_up"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/disappointed_when_I_opened_up_the_package_containing_my_iPod_wallet"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/the_package_containing"/>
+</sentence>
+</rdf:Description>
+</rdf:RDF>

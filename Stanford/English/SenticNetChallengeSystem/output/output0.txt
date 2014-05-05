@@ -1,0 +1,17 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="http://sentic.net/challenge/sentence">
+<sentence xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/challenge/sentence">
+<text xmlns="http://sentic.net/challenge/" rdf:datatype="http://www.w3.org/TR/rdf-text/">
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/shipped_{when}_very_fast"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/very_fast"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/shipped_this_product"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/I_want"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/shipped_Fred_Flare"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/start_saying_Fred_Flare_-_shipped_this_product_very_fast"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/Fred_Flare"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/saying_Fred_Flare_-_shipped_this_product_very_fast"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/Fred_Flare_-_shipped_this_product_very_fast"/>
+<semantics xmlns="http://sentic.net/challenge/" rdf:resource="http://sentic.net/api/en/concept/this_product"/>
+</sentence>
+</rdf:Description>
+</rdf:RDF>
