@@ -1,0 +1,1 @@
+S(agent:NP(Head:N:他)|Head:Vt:抓起|DUMMY:NP(Head:N:筆)|property:VP(property:ADV:即興|Head:Vi:作畫))
