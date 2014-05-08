@@ -41,6 +41,7 @@ public class ConceptExtractorBatchClient
 			String sent;
 			while ((sent = inputReader.readLine()) != null)
 			{
+			System.out.println("Sentence: "+sent);
 			System.out.println("Parsing....");
 			String sentence = sent + (char) 13;
 			
@@ -52,7 +53,7 @@ public class ConceptExtractorBatchClient
 			OutputStreamWriter osw = new OutputStreamWriter(bos, "US-ASCII");
 			osw.write(sentence);
 			osw.flush();
-			System.out.println("SRL....");
+			System.out.println("Concept Extraction....");
 			BufferedReader fromServer = new BufferedReader(
        		new InputStreamReader(connection.getInputStream()));
 			String serverResponse = fromServer.readLine();

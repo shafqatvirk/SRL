@@ -23,11 +23,12 @@ if (sd == null) {
 
 String toMatch=readFile();
 //System.out.println(toMatch);
-Pattern pattern=Pattern.compile(".*?<text.*?>(.*?)</text>.*?",Pattern.DOTALL);
-//Pattern pattern=Pattern.compile(".*?<text.*?>(.*?)</text>",Pattern.DOTALL);
+//Pattern pattern=Pattern.compile(".*?<text.*?>(.*?)</text>.*?",Pattern.DOTALL);
+Pattern pattern=Pattern.compile(".*?<review_text>(.*?)</review_text>.*?",Pattern.DOTALL);
 //Pattern pattern=Pattern.compile(".*?<table class=\"claroTable\".*?>(.*?)</table>.*?"); //I want this one to work
 Matcher matcher=pattern.matcher(toMatch);
 
+/*
 if(matcher.matches()) {
 	String sentences[] = sd.sentDetect(matcher.group(1));
 	PrintWriter output = new PrintWriter("input.sent");
@@ -39,6 +40,22 @@ if(matcher.matches()) {
 	//System.out.println(sentences[0]);
     //System.out.println(matcher.group(1));
 }
+*/
+ final List<String> reviews = new ArrayList<String>();
+ while (matcher.find()) {
+        reviews.add(matcher.group(1));
+    }
+ //System.out.println(tagValues);
+ for (String review : reviews ) {
+		
+		PrintWriter output = new PrintWriter("./inputFiles/input"+reviews.indexOf(review)+".sent");
+        String sentences[] = sd.sentDetect(review);
+		for (String sent : sentences) {
+		output.println(sent);
+        System.out.println(sent);
+        }
+		output.close();
+        }
 
 }
 
@@ -47,7 +64,8 @@ if(matcher.matches()) {
       try{
             // Open the file that is the first 
             // command line parameter
-            FileInputStream fstream = new FileInputStream("data.txt");
+            //FileInputStream fstream = new FileInputStream("data.txt");
+			FileInputStream fstream = new FileInputStream("short.review");
             // Get the object of DataInputStream
             DataInputStream in = new DataInputStream(fstream);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));

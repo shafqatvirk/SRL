@@ -112,16 +112,17 @@ public class ConceptExtractorServer {
 		sentence = fromClient.readLine();
 		
 		Tree tree = parser.parse(sentence); 
-		System.out.println(tree);
+		//System.out.println(tree);
 			
-		System.out.println("Extracting features...");
-		String srlIdentifier = "python srl-identifier.py " + '"'+tree+'"' ;
+		//System.out.println("Extracting features...");
+		//String srlIdentifier = "python srl-identifier.py " + '"'+tree+'"' ;
+		String srlIdentifier = "python featureExtractorClient.py " + '"'+tree+'"' ;
 		//System.out.println(srlIdentifier);
 		Runtime rr = Runtime.getRuntime();
         Process pp = rr.exec(srlIdentifier);
         BufferedReader brr = new BufferedReader(new InputStreamReader(pp.getInputStream()));
 		pp.waitFor();
-        System.out.println("Semantic Role Labeling..."); 
+        //System.out.println("Semantic Role Labeling..."); 
 		BufferedReader reader = new BufferedReader(new FileReader("identifier.test"));
 		BufferedReader classifier = new BufferedReader(new FileReader("classifier.test"));
 		
@@ -146,8 +147,8 @@ public class ConceptExtractorServer {
 			identifierOutput.close();
 			classifierOutput.close();
 			
-		System.out.println("Done!");
-        String returnCode = "Done!" + (char) 13;
+		System.out.println("Serverd!");
+        String returnCode = "Concepts:" + (char) 13;
         BufferedOutputStream os = new BufferedOutputStream(connection.getOutputStream());
         OutputStreamWriter osw = new OutputStreamWriter(os, "US-ASCII");
         osw.write(returnCode);
